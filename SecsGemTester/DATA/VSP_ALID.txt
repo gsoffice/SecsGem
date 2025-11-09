@@ -1,0 +1,233 @@
+0, Front Left EMO[X000] ALARM,6
+1, Spare (Front Right EMO)[X001] ALARM,6
+2, Rear Left EMO[X002] ALARM,6
+3, Main CDA Pressure[X003] ALARM,6
+4, Front Door Close[X004] ALARM,6
+5, Rear Door Close[X005] ALARM,6
+6, Main N2 Pressure[X006] ALARM,6
+7, GAS 1 (Ar) Pressure[X007] ALARM,6
+8, GAS 2 (O2) Pressure[X008] ALARM,6
+9, GAS 3 Pressure[X009] ALARM,6
+10, Spare (Gas 4 Pressure)[X00A] ALARM,6
+11, Cooling Air Pressure[X00B] ALARM,6
+12, Spare (M-Cool)[X00C] ALARM,6
+13, Pump Overload[X00D] ALARM,6
+14, Vacuum V/V Open[X00E] ALARM,6
+15, Spare (Pump Oil Check)[X00F] ALARM,6
+16, Pump RUN Status[X010] ALARM,6
+17, Pump Alarm Status[X011] ALARM,6
+18, B.A From UP-Stream[X012] ALARM,6
+19, F.B.A From UP-Stream[X013] ALARM,6
+20, M.R From DOWN-Stream[X014] ALARM,6
+21, Load C/V 1 Boat In Check[X015] ALARM,6
+22, Load C/V 1 Boat Arrival Check[X016] ALARM,6
+23, Load C/V 1 Boat Out Check[X017] ALARM,6
+24, Pusher 1 CYL UP Position[X018] ALARM,6
+25, Pusher 1 CYL DOWN Position[X019] ALARM,6
+26, Pusher 1 Overload[X01A] ALARM,6
+27, Spare[X01B] ALARM,6
+28, Chamber Load Boat Protrusion Detect[X01C] ALARM,6
+29, Chamber Unload Boat Protrusion Detect[X01D] ALARM,6
+30, Chamber CYL Open[X01E] ALARM,6
+31, Chamber CYL Close[X01F] ALARM,6
+32, Chamber Open Check[X020] ALARM,6
+33, Unload C/V 1 Boat In Check[X021] ALARM,6
+34, Unload C/V 1 Boat Arrival Check[X022] ALARM,6
+35, Unload C/V 1 Boat Out Check[X023] ALARM,6
+36, Load Stopper 1 CYL UP [X024] ALARM,6
+37, Load Stopper 1 CYL DOWN[X025] ALARM,6
+38, Unload Stopper 1 CYL UP [X026] ALARM,6
+39, Unload Stopper 1 CYL DOWN[X027] ALARM,6
+40, Load C/V Motor Alarm[X028] ALARM,6
+41, Unload C/V Motor Alarm[X029] ALARM,6
+42, Spare[X02A] ALARM,6
+43, Spare[X02B] ALARM,6
+44, Spare[X02C] ALARM,6
+45, Spare[X02D] ALARM,6
+46, Spare (Rear Right EMO)[X02E] ALARM,6
+47, Load C/V Boat 2 In Check[X02F] ALARM,6
+48, Load C/V Boat 2 Arrival Check[X030] ALARM,6
+49, Load C/V Boat 2 Out Check[X031] ALARM,6
+50, Pusher 2 CYL UP Position[X032] ALARM,6
+51, Pusher 2 CYL DOWN Position[X033] ALARM,6
+52, Pusher 2 Overload[X034] ALARM,6
+53, Unload C/V 2 Boat In Check[X035] ALARM,6
+54, Unload C/V 2 Boat Arrival Check[X036] ALARM,6
+55, Unload C/V 2 Boat Out Check[X037] ALARM,6
+56, Load Stopper 2 CYL UP [X038] ALARM,6
+57, Load Stopper 2 CYL DOWN[X039] ALARM,6
+58, Unload Stopper 2 CYL UP [X03A] ALARM,6
+59, Unload Stopper 2 CYL DOWN[X03B] ALARM,6
+60, Start[X03C] ALARM,6
+61, Stop[X03D] ALARM,6
+62, Reset[X03E] ALARM,6
+63, Spare[X03F] ALARM,6
+64, Load Rail 1 Lane In Roller Up [X040]Alarm,6
+65, Load Rail 1 Lane In Roller Down[X041]Alarm,6
+66, Load Rail 1 Lane Out Roller Up[X042]Alarm,6
+67, Load Rail 1 Lane Out Roller Down[X043]Alarm,6
+68, Unload Rail 1 Lane In Roller Up[X044]Alarm,6
+69, Unload Rail 1 Lane In Roller Down[X045]Alarm,6
+70, Unload Rail 1 Lane Out Roller Up[X046]Alarm,6
+71, Unload Rail 1 Lane Out Roller Down[X047]Alarm,6
+72, Load Rail 2 Lane In Roller Up[X048]Alarm,6
+73, Load Rail 2 Lane In Roller Down[X049]Alarm,6
+74, Load Rail 2 Lane Out Roller Up[X04A]Alarm,6
+75, Load Rail 2 Lane Out Roller Down[X04B]Alarm,6
+76, Unload Rail 2 Lane In Roller Up[X04C]Alarm,6
+77, Unload Rail 2 Lane In Roller Down[X04D]Alarm,6
+78, Unload Rail 2 Lane Out Roller Up[X04E]Alarm,6
+79, Unload Rail 2 Lane Out Roller Down[X04F]Alarm,6
+80, Load Rail 1 Strip Lift Up[X050] ALARM,6
+81, Load Rail 1 Strip Lift Down[X051] ALARM,6
+82, Load Rail 2 Strip Lift Up[X052] ALARM,6
+83, Load Rail 2 Strip Lift Down[X053] ALARM,6
+84, Load Rail 3 Strip Lift Up[X054] ALARM,6
+85, Load Rail 3 Strip Lift Down[X055] ALARM,6
+86, Load Rail 4 Strip Lift Up[X056] ALARM,6
+87, Load Rail 4 Strip Lift Down[X057] ALARM,6
+88, Unload Rail 1 Strip Lift Up[X058] ALARM,6
+89, Unload Rail 1 Strip Lift Down[X059] ALARM,6
+90, Unload Rail 2 Strip Lift Up[X05A] ALARM,6
+91, Unload Rail 2 Strip Lift Down[X05B] ALARM,6
+92, Unload Rail 3 Strip Lift Up[X05C] ALARM,6
+93, Unload Rail 3 Strip Lift Down[X05D] ALARM,6
+94, Unload Rail 4 Strip Lift Up[X05E] ALARM,6
+95, Unload Rail 4 Strip Lift Down[X05F] ALARM,6
+102, Loading Index Strip Pos. Check1_1(Top)[CK1S1] Alarm,6
+103, Loading Index Strip Pos. Check1_2(Top)[CK1S2] Alarm,6
+104, Loading Index Strip Pos. Check3_1(Top)[CK1S5] Alarm,6
+110, Loading Index Strip Pos. Check2_1(Top)[CK1S3] Alarm,6
+111, Ionizer Alarm #1[X078] Alarm,6
+112, Ionizer Alarm #2[X079] Alarm,6
+113, Loading Index Strip Pos. Check1_1(Bottom)[CK2S1] Alarm,6
+118, Loading Index Strip Pos. Check1_1(Bottom)[CK2S1] Alarm,6
+119, Loading Index Strip Pos. Check1_2(Bottom)[CK2S2] Alarm,6
+120, Loading Index Strip Pos. Check3_1(Bottom)[CK2S5] Alarm,6
+126, Loading Index Strip Pos. Check2_1(Bottom)[CK2S3] Alarm,6
+127, Loading Index Strip Pos. Check2_2(Bottom)[CK2S4] Alarm,6
+128, Loading Index Strip Pos. Check3_2(Bottom)[CK2S6] Alarm,6
+200, Pusher Cylinder Down States  [X019Alarm,6
+201, Loading conveyor operation alarm,6
+202, Unloading conveyor operation alarm,6
+203, Loading conveyor stopper up alarm,6
+300, Chamber Not Close,6
+301, Cannot Purge,6
+302, Chamber Not Open,6
+303, Pump Oil Change Alarm,6
+304, Leakage Test Fail,6
+305, Abnormal Chamber Device Status ,6
+306, Recipe Not Selected,6
+307, System Initializing Error,6
+308, Leakage Test Error,6
+309, Process Program Alarm,6
+310, Remote Start Error,6
+311, Index Pusher Posiiton Interlock,6
+312, Barcode Reading Fail[Loading],6
+313, Loading Conveyor Sensor Interlock,6
+314, Unloading Conveyor Sensor Interlock,6
+315, Index Pusher Down Posiiton Interlock,6
+316, Index Pusher Move Interlock,6
+317, Host Alarm Message,6
+318, Handler Alarm Message,6
+319, Handler communication disconnection ,6
+320, Material Not Enough Alarm,6
+321, Loading ID Validation Time-Out[1LANE],6
+322, Loading ID Validation Time-Out[2LANE],6
+323, Loading ID Validation Error[1LANE],6
+324, Loading ID Validation Error[2LANE],6
+325, Host communication disconnection ,6
+326, Unloading ID Validation Time-Out [1LANE],6
+327, Unloading ID Validation Time-Out [2LANE],6
+328, Unloading ID Validation Error[1LANE],6
+329, Unloading ID Validation Error[2LANE],6
+330, Error receiving Get Test ID,6
+331, Strip ID mismatch alarm [1 lane],6
+332, Strip ID mismatch alarm [2 lane],6
+333, Barcode Reading Fail[Unloading],6
+334, 1lane Invalid lane.,6
+335, 2lane Invalid lane.,6
+336, Load Rail Lift Not Down Alarm,6
+337, Load Rail Stopper Not Down Alarm,6
+338, Unload Rail Lift Not Down Alarm,6
+339, Unload Rail Stopper Not Down Alarm,6
+340, Index Pusher Cannot Down,6
+341, Load Rail Lift Cannot Up Alarm,6
+342, Load Rail Stopper Cannot Up Alarm,6
+343, Unload Rail Lift Cannot Up Alarm,6
+344, Unload Rail Stopper Cannot Up Alarm,6
+345, HeartBeat check timeout,6
+346, Set Vacuum Reach Alarm,6
+400, Vacuum Time Out,6
+401, RF Time Out,6
+402, RF Error,6
+403, Gas1 Injection Time Out,6
+404, Gas2 Injection Time Out,6
+405, Gas3 Injection Time Out,6
+406, Gas4 Injection Time Out,6
+407, Vacuum Pressure Over,6
+408, RF Communication Error,6
+409, Vacuum Gauge Fault,6
+410, Electrode Over Temperature,6
+411, Matcher Communication Error,6
+420, RF Generator Over-Temp.,6
+421, RF Generator Over-Heat,6
+422, RF Generator Current High,6
+423, RF Generator Forward High,6
+424, RF Generator Reflect High,6
+425, RF Generator External Interlock,6
+426, RF Generator Interlock Sw,6
+427, RF Generator Fan Off Fault,6
+428, RF Generator Over Heat External Interlock,6
+429, RF Generator Current High Sw Interlock,6
+470, Chamber Top Shield Plate A Pre-Maint Shot Count Over,6
+471, Chamber Top Shield Plate B Pre-Maint Shot Count Over,6
+472, Chamber Ceramic Plate A Pre-Maint Shot Count Over,6
+473, Chamber Ceramic Plate B Pre-Maint Shot Count Over,6
+474, Chamber Ceramic Plate B Pre-Maint Shot Count Over,6
+475, Chamber Pre-Maint Shot Count Over(Top),6
+476, Chamber Top Shield Plate A Pre-Maint Shot Count Over(Top),6
+477, Chamber Top Shield Plate B Pre-Maint Shot Count Over(Top),6
+478, Chamber Ceramic Plate A Pre-Maint Shot Count Over(Top),6
+479, Chamber Ceramic Plate B Pre-Maint Shot Count Over(Top),6
+700, FFU Disconnection,6
+701, FFU Motor Alarm,6
+702, FFU overvoltage alarm,6
+703, FFU power OFF alarm,6
+704, FFU Remote Alarm,6
+800, Load Conveyor Y Not Home,6
+801, Load Conveyor Y Driver Alarm,6
+802, Load Conveyor Y - Soft Limit,6
+803, Load Conveyor Y + Soft Limit,6
+804, Load Conveyor Y - Limit,6
+805, Load Conveyor Y + Limit,6
+806, Load Conveyor Y Home Start Fail,6
+807, Load Conveyor Y Homing Fail,6
+808, Load Conveyor Y Moving Time Out,6
+809, Load Conveyor Y Start Fail,6
+810, Load Conveyor Y Emergency,6
+811, Load Conveyor Y Velocity or Accel Value Error,6
+820, Index Pusher X Not Home,6
+821, Index Pusher X Driver Alarm,6
+822, Index Pusher X - Soft Limit,6
+823, Index Pusher X + Soft Limit,6
+824, Index Pusher X - Limit,6
+825, Index Pusher X + Limit,6
+826, Index Pusher X Home Start Fail,6
+827, Index Pusher X Homing Fail,6
+828, Index Pusher X Moving Time Out,6
+829, Index Pusher X Start Fail,6
+830, Index Pusher X Emergency,6
+831, Index Pusher X Velocity or Accel Value Error,6
+840, Unload Conveyor Y Not Home,6
+841, Unload Conveyor Y Driver Alarm,6
+842, Unload Conveyor Y - Soft Limit,6
+843, Unload Conveyor Y + Soft Limit,6
+844, Unload Conveyor Y - Limit,6
+845, Unload Conveyor Y + Limit,6
+846, Unload Conveyor Y Home Start Fail,6
+847, Unload Conveyor Y Homing Fail,6
+848, Unload Conveyor Y Moving Time Out,6
+849, Unload Conveyor Y Start Fail,6
+850, Unload Conveyor Y Emergency,6
+851, Unload Conveyor Y Velocity or Accel Value Error,6
