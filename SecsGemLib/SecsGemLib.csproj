@@ -6,11 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="ReadFiles\CEID\" />
-    <Folder Include="ReadFiles\ALID\" />
-    <Folder Include="ReadFiles\FORMAT\" />
-    <Folder Include="ReadFiles\SVID\" />
-  </ItemGroup>
-
 </Project>

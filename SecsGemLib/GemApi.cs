@@ -1,8 +1,6 @@
-﻿using SecsGemLib.Messages;
-using SecsGemLib.Streams;
-using System;
+﻿using SecsGemLib.Core;
+using SecsGemLib.Handlers;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SecsGemLib
 {
@@ -69,16 +67,16 @@ namespace SecsGemLib
         {
             if (!IsConnected) return;
 
-            Message msg = Message.BuildAutoMessage(stream, function);
+            //Message msg = Message.Build(stream, function); gsseo
 
-            if (msg == null)
-            {
-                Console.WriteLine($"[GEM] Stream={stream}, Function={function} 메시지 생성 실패");
-                return;
-            }
+            //if (msg == null)
+            //{
+            //    Console.WriteLine($"[GEM] Stream={stream}, Function={function} 메시지 생성 실패");
+            //    return;
+            //}
 
-            await _hsms.SendAsync(msg);
-            Console.WriteLine($"[GEM] S{stream}F{function} Sent");
+            //await _hsms.SendAsync(msg);
+            //Console.WriteLine($"[GEM] S{stream}F{function} Sent");
         }
 
         /// <summary>

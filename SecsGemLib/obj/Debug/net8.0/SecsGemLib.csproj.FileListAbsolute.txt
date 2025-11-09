@@ -9,3 +9,4 @@ D:\Projects\C#\SecsGemSolution\SecsGemLib\obj\Debug\net8.0\SecsGemLib.dll
 D:\Projects\C#\SecsGemSolution\SecsGemLib\obj\Debug\net8.0\refint\SecsGemLib.dll
 D:\Projects\C#\SecsGemSolution\SecsGemLib\obj\Debug\net8.0\SecsGemLib.pdb
 D:\Projects\C#\SecsGemSolution\SecsGemLib\obj\Debug\net8.0\ref\SecsGemLib.dll
+D:\Projects\C#\SecsGemSolution\SecsGemLib\obj\Debug\net8.0\SecsGemLib.sourcelink.json

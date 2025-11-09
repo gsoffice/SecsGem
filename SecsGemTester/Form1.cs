@@ -1,4 +1,5 @@
 using SecsGemLib;
+using SecsGemLib.Utils;
 using System.Text;
 
 namespace SecsGemTester
@@ -6,15 +7,11 @@ namespace SecsGemTester
     public partial class Form1 : Form
     {
         private GemApi _gemApi;
-        //private Logger _logger;
+        
         public Form1()
         {
             InitializeComponent();
-
-            //var logger = new Logger();
-
-            //_logger = new Logger();
-            Logger.LogWritten += Logger_LogWritten;
+            Logger.EventHandler += Logger_LogWritten;
         }
 
         private void Logger_LogWritten(string log)
