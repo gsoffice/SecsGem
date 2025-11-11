@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace SecsGemLib.Core
 {
-    public static class SecsEncoder
+    public static class MessageEncoder
     {
         public static byte[] EncodeItem(SecsItem item)
         {

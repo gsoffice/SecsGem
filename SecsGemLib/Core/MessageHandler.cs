@@ -1,20 +1,19 @@
-﻿using SecsGemLib.Core;
-using SecsGemLib.Protocols.ControlMessages;
+﻿using SecsGemLib.Protocols.ControlMessages;
 using SecsGemLib.Protocols.DataMessages;
 using SecsGemLib.Utils;
 using System;
 using System.Threading.Tasks;
 
-namespace SecsGemLib.Handlers
+namespace SecsGemLib.Core
 {
-    public class MsgHandler
+    public class MessageHandler
     {
         private readonly Communicator _comm;
 
         public event Action? SelectCompleted;
         public event Action<byte[]>? OtherMessageReceived;
 
-        public MsgHandler(Communicator communicator)
+        public MessageHandler(Communicator communicator)
         {
             _comm = communicator;
             _comm.DataReceived += OnDataReceived;
@@ -37,8 +36,8 @@ namespace SecsGemLib.Handlers
                 {
                     case 0x01: // Select.req
                         Logger.Write("[HSMS] Select.req → Select.rsp");
-                        await _comm.SendAsync(ControlFactory.BuildSelectRsp(data));                        
-                        var s1f13 = StreamFactory.Build(stream:1, function:13).ToBytes();
+                        await _comm.SendAsync(ControlFactory.BuildSelectRsp(data));
+                        var s1f13 = StreamFactory.Build(stream: 1, function: 13).ToBytes();
                         await Task.Delay(200); // 살짝 텀
                         await _comm.SendAsync(s1f13);
                         SelectCompleted?.Invoke();
@@ -56,8 +55,12 @@ namespace SecsGemLib.Handlers
             }
             else if (MessageInspector.IsDataMsg(data))
             {
-                var msg = StreamFactory.Build(data)?.ToBytes();
-                if (msg is not null) await _comm.SendAsync(msg);
+                byte[] msg = MessageRouter.Route(data)?.ToBytes();
+
+                if (msg is not null)
+                {
+                    await _comm.SendAsync(msg);
+                }
             }
 
             OtherMessageReceived?.Invoke(data);

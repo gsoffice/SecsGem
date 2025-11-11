@@ -7,7 +7,7 @@ namespace SecsGemTester
     public partial class Form1 : Form
     {
         private GemApi _gemApi;
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -49,6 +49,13 @@ namespace SecsGemTester
         private void OnMessageReceived(string msg)
         {
             Console.WriteLine(msg);
-        }        
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            _gemApi.AddSvid(0, "SVID1", "A");
+            _gemApi.AddSvid(0, "SVID2", "U4");
+            _gemApi.AddSvid(0, "SVID3", "L");            
+        }
     }
 }

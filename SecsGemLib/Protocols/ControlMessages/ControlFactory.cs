@@ -25,7 +25,7 @@ namespace SecsGemLib.Protocols.ControlMessages
             ushort sessionId = MessageInspector.GetSessionId(req);
             uint sysBytes = MessageInspector.GetSystemBytes(req);
             // Select.rsp 은 Status 1바이트 Body 포함
-            var body = SecsEncoder.EncodeItem(SecsItem.B(status));
+            var body = MessageEncoder.EncodeItem(SecsItem.B(status));
             return BuildControlPacket(sessionId, sType: 0x02, sysBytes, body);
         }
 

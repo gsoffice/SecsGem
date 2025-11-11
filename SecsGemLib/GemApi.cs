@@ -1,5 +1,5 @@
 ﻿using SecsGemLib.Core;
-using SecsGemLib.Handlers;
+using SecsGemLib.Gem.Variables;
 using System.Text;
 
 namespace SecsGemLib
@@ -10,7 +10,7 @@ namespace SecsGemLib
     public class GemApi
     {
         private Communicator _hsms;
-        private MsgHandler _hsmsHandler;
+        private MessageHandler _hsmsHandler;
         public event Action<byte[]> OnMessageReceive;
 
         public bool IsConnected => _hsms?.IsConnected ?? false;
@@ -25,7 +25,7 @@ namespace SecsGemLib
         /// </summary>
         public GemApi()
         {
-            
+           
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace SecsGemLib
         public async Task<bool> ConnectAsync(string ip, int port, bool passive = false)
         {
             _hsms = new Communicator(ip, port, passive);
-            _hsmsHandler = new MsgHandler(_hsms);
+            _hsmsHandler = new MessageHandler(_hsms);
             _hsmsHandler.OtherMessageReceived += OnMessageReceived;
 
             try
@@ -94,6 +94,11 @@ namespace SecsGemLib
         {
             string msg = Encoding.ASCII.GetString(data);
             MessageReceived?.Invoke(msg);
+        }
+
+        public void AddSvid(int id, string name, string type)
+        {
+            SvidTable.Add(id, name, type);
         }
     }
 }

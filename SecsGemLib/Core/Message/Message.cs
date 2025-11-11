@@ -11,6 +11,8 @@ namespace SecsGemLib.Core
         public bool WBit { get; set; }
         public uint SystemBytes { get; set; }
         public SecsItem Body { get; set; }
+        public bool IsPrimary { get; set; }
+        public bool IsSecondary { get; set; }
 
         private byte[] _header = System.Array.Empty<byte>();
         private byte[] _prefix = System.Array.Empty<byte>();
@@ -27,7 +29,7 @@ namespace SecsGemLib.Core
                 SystemBytes = 1
             };
 
-            msg._body = SecsEncoder.EncodeItem(body);
+            msg._body = MessageEncoder.EncodeItem(body);
             msg._header = MessageHeader.Build(0, stream, function, wbit, msg.SystemBytes, 0x00);
             msg._prefix = MessagePrefix.Build(msg._header, msg._body);
             return msg;

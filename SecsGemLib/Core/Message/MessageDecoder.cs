@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SecsGemLib.Core
 {
-    public static class SecsDecoder
+    public static class MessageDecoder
     {
         public static Message Parse(byte[] raw)
         {
@@ -29,7 +29,12 @@ namespace SecsGemLib.Core
             byte[] body = raw.Skip(14).ToArray();
             SecsItem secsBody = null;
             if (body.Length > 0)
+            {
                 secsBody = DecodeItem(body, out _);
+            }                
+
+            bool isPrimary = function % 2 == 1;
+            bool isSecondary = !isPrimary;
 
             return new Message
             {
@@ -38,7 +43,9 @@ namespace SecsGemLib.Core
                 Function = function,
                 WBit = wbit,
                 SystemBytes = sysBytes,
-                Body = secsBody
+                Body = secsBody,
+                IsPrimary = isPrimary,
+                IsSecondary = isSecondary
             };
         }
 

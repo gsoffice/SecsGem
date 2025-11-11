@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SecsGemLib.Core
+namespace SecsGemLib.Core.Message
 {
-    public class SecsItem
+    public class MessageItem
     {
         // ---------------- ENUM ----------------
         public enum SecsFormat : byte
@@ -29,7 +29,7 @@ namespace SecsGemLib.Core
 
         // --------------- PROPS ----------------
         public SecsFormat Format { get; set; }
-        public List<SecsItem> Items { get; set; } = new();
+        public List<MessageItem> Items { get; set; } = new();
         public byte[] Data { get; set; }
 
         public int NumElements
@@ -37,7 +37,9 @@ namespace SecsGemLib.Core
             get
             {
                 if (Data == null || Data.Length == 0)
-                    return Format == SecsFormat.L ? (Items?.Count ?? 0) : 0;
+                {
+                    return Format == SecsFormat.L ? Items?.Count ?? 0 : 0;
+                }
 
                 return Format switch
                 {
@@ -51,33 +53,33 @@ namespace SecsGemLib.Core
             }
         }
 
-        public SecsItem(SecsFormat fmt) { Format = fmt; }
+        public MessageItem(SecsFormat fmt) { Format = fmt; }
 
         // ------------ FACTORIES ---------------
-        public static SecsItem L(params SecsItem[] list)
+        public static MessageItem L(params MessageItem[] list)
         {
-            var item = new SecsItem(SecsFormat.L);
+            var item = new MessageItem(SecsFormat.L);
             item.Items.AddRange(list);
             return item;
         }
 
-        public static SecsItem A(string str)
+        public static MessageItem A(string str)
         {
-            var item = new SecsItem(SecsFormat.A);
+            var item = new MessageItem(SecsFormat.A);
             item.Data = Encoding.ASCII.GetBytes(str ?? "");
             return item;
         }
 
-        public static SecsItem B(params byte[] bytes)
+        public static MessageItem B(params byte[] bytes)
         {
-            var item = new SecsItem(SecsFormat.B);
+            var item = new MessageItem(SecsFormat.B);
             item.Data = bytes ?? Array.Empty<byte>();
             return item;
         }
 
-        public static SecsItem U4(params uint[] values)
+        public static MessageItem U4(params uint[] values)
         {
-            var item = new SecsItem(SecsFormat.U4);
+            var item = new MessageItem(SecsFormat.U4);
             var buf = new List<byte>();
             foreach (var v in values)
                 buf.AddRange(BitConverter.GetBytes(v).Reverse());
@@ -93,7 +95,7 @@ namespace SecsGemLib.Core
             return sb.ToString();
         }
 
-        private static void FormatItem(SecsItem item, int indent, StringBuilder sb)
+        private static void FormatItem(MessageItem item, int indent, StringBuilder sb)
         {
             string pad = new string(' ', indent * 2);
 

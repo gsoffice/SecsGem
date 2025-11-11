@@ -103,7 +103,7 @@ namespace SecsGemLib.Core
                     byte[] data = new byte[read];
                     Array.Copy(buffer, data, read);
 
-                    var msg = SecsDecoder.Parse(data);
+                    Message msg = MessageDecoder.Parse(data);
                     Logger.Write($"[Comm] Rx : {ByteHelper.ToHex(data)}");
                     Logger.Write($"[Comm] Rx : {msg}");
                     DataReceived?.Invoke(data);
@@ -119,7 +119,7 @@ namespace SecsGemLib.Core
         {
             if (_stream == null || !_client?.Connected == true) return;
 
-            var msg = SecsDecoder.Parse(data);
+            var msg = MessageDecoder.Parse(data);
             Logger.Write($"[Comm] Tx : {ByteHelper.ToHex(data)}");
             Logger.Write($"[Comm] Tx : {msg}");
             await _stream.WriteAsync(data, 0, data.Length);
