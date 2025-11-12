@@ -96,9 +96,9 @@ namespace SecsGemLib
             MessageReceived?.Invoke(msg);
         }
 
-        public void AddSvid(int id, string name, string type)
+        public void AddSvid(long svid, string name, string format, string unit)
         {
-            SvidTable.Add(id, name, type);
+            SvidTable.Add(svid, name, format, unit);
         }
     }
 }

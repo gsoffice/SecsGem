@@ -5,11 +5,11 @@ namespace SecsGemLib.Core
 {
     public static class MessageEncoder
     {
-        public static byte[] EncodeItem(SecsItem item)
+        public static byte[] EncodeItem(MessageItem item)
         {
             if (item == null) return Array.Empty<byte>();
 
-            if (item.Format == SecsItem.SecsFormat.L)
+            if (item.Format == MessageItem.DataFormat.L)
             {
                 var encodedChildren = item.Items.SelectMany(EncodeItem).ToArray();
                 var lenBytes = EncodeLength(item.Items.Count);

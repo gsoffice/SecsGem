@@ -11,5 +11,6 @@ namespace SecsGemLib.Protocols.DataMessages
     {
         int StreamNo { get; }
         Message BuildMessage(int function);
+        Message BuildMessage(Message msg);
     }
 }

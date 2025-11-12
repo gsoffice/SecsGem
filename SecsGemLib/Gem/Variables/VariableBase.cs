@@ -1,18 +1,22 @@
-﻿namespace SecsGemLib.Gem.Variables
+﻿using SecsGemLib.Core;
+
+namespace SecsGemLib.Gem.Variables
 {
     public class VariableBase
     {
-        public int Id { get; }
+        public long Svid { get; }
         public string Name { get; }
-        public object Value { get; set; }
-        public string Description { get; }
+        public MessageItem.DataFormat Format { get; set; }  // 🔹 타입 변경
+        public string Unit { get; }
+        public object Data { get; set; }                     // 🔹 string → object (리스트/숫자 대응)
 
-        public VariableBase(int id, string name, object value = null, string desc = "")
+        public VariableBase(long svid, string name, MessageItem.DataFormat format, string unit)
         {
-            Id = id;
+            Svid = svid;
             Name = name;
-            Value = value;
-            Description = desc;
+            Format = format;
+            Unit = unit;
+            Data = "";
         }
     }
 }

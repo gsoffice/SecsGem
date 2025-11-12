@@ -102,10 +102,6 @@ namespace SecsGemLib.Core
 
                     byte[] data = new byte[read];
                     Array.Copy(buffer, data, read);
-
-                    Message msg = MessageDecoder.Parse(data);
-                    Logger.Write($"[Comm] Rx : {ByteHelper.ToHex(data)}");
-                    Logger.Write($"[Comm] Rx : {msg}");
                     DataReceived?.Invoke(data);
                 }
             }
@@ -115,11 +111,11 @@ namespace SecsGemLib.Core
             }
         }
 
-        public async Task SendAsync(byte[] data)
+        public async Task SendAsync(Message msg)
         {
             if (_stream == null || !_client?.Connected == true) return;
 
-            var msg = MessageDecoder.Parse(data);
+            var data = msg.ToBytes();
             Logger.Write($"[Comm] Tx : {ByteHelper.ToHex(data)}");
             Logger.Write($"[Comm] Tx : {msg}");
             await _stream.WriteAsync(data, 0, data.Length);

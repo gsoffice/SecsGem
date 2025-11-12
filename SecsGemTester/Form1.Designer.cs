@@ -67,9 +67,10 @@
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(206, 3);
+            richTextBox1.Dock = DockStyle.Right;
+            richTextBox1.Location = new Point(211, 0);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(748, 518);
+            richTextBox1.Size = new Size(748, 524);
             richTextBox1.TabIndex = 3;
             richTextBox1.Text = "";
             // 
@@ -93,7 +94,6 @@
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);

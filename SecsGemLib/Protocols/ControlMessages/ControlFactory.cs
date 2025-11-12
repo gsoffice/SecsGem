@@ -1,40 +1,66 @@
 ﻿using SecsGemLib.Core;
 using SecsGemLib.Utils;
-using System.Linq;
 
 namespace SecsGemLib.Protocols.ControlMessages
 {
     public static class ControlFactory
     {
-        // 공통: Control Header + Optional Body + Length Prefix 조합
-        private static byte[] BuildControlPacket(ushort sessionId, byte sType, uint sysBytes, byte[] body = null)
+        /// <summary>
+        /// 공통 Control Message 생성 (HSMS Header + Body + Prefix)
+        /// </summary>
+        private static Message BuildControlMessage(ushort sessionId, byte sType, uint sysBytes, MessageItem body = null)
         {
-            // Control 메시지용 10바이트 헤더 (DeviceId=SessionId)
-            var header = MessageHeader.Build(sessionId, 0, 0, false, sysBytes, sType);
-            // PType=0x00 으로 표시해야 하므로 header[4] 위치를 0x00 으로 확실히 세팅
-            header[4] = 0x00; // PType
-            header[5] = sType;
+            var msg = new Message
+            {
+                DeviceId = sessionId,
+                Stream = 0,
+                Function = 0,
+                WBit = false,
+                SType = sType,
+                PType = 0x00,
+                SystemBytes = sysBytes,
+                Body = body
+            };
 
-            var bodyBytes = body ?? System.Array.Empty<byte>();
-            var prefix = MessagePrefix.Build(header, bodyBytes);
-            return ByteHelper.Concat(prefix, header, bodyBytes);
+            // Body
+            msg._body = body != null ? MessageEncoder.EncodeItem(body) : System.Array.Empty<byte>();
+
+            // Header (10 bytes)
+            msg._header = MessageHeader.Build(sessionId, 0, 0, false, sysBytes, sType);
+            msg._header[4] = 0x00; // PType
+            msg._header[5] = sType;
+
+            // Prefix (4 bytes)
+            msg._prefix = MessagePrefix.Build(msg._header, msg._body);
+
+            return msg;
         }
 
-        public static byte[] BuildSelectRsp(byte[] req, byte status = 0x00)
+        /// <summary>
+        /// SELECT.RSP 생성 (S-Type=0x02, 1바이트 Status 포함)
+        /// </summary>
+        public static Message BuildSelectRsp(Message msg, byte status = 0x00)
         {
-            ushort sessionId = MessageInspector.GetSessionId(req);
-            uint sysBytes = MessageInspector.GetSystemBytes(req);
-            // Select.rsp 은 Status 1바이트 Body 포함
-            var body = MessageEncoder.EncodeItem(SecsItem.B(status));
-            return BuildControlPacket(sessionId, sType: 0x02, sysBytes, body);
+            ushort sessionId = msg.DeviceId;
+            uint sysBytes = msg.SystemBytes;
+
+            var body = MessageItem.B(status);
+            return BuildControlMessage(sessionId, sType: 0x02, sysBytes, body);
         }
 
-        public static byte[] BuildLinktestRsp(byte[] req)
+        /// <summary>
+        /// LINKTEST.RSP 생성 (S-Type=0x06, Body 없음)
+        /// </summary>
+        public static Message BuildLinktestRsp(Message msg)
         {
-            ushort sessionId = MessageInspector.GetSessionId(req);
-            uint sysBytes = MessageInspector.GetSystemBytes(req);
-            // Linktest.rsp 는 Body 없음
-            return BuildControlPacket(sessionId, sType: 0x06, sysBytes, null);
+            ushort sessionId = msg.DeviceId;
+            uint sysBytes = msg.SystemBytes;
+
+            return BuildControlMessage(sessionId, sType: 0x06, sysBytes, null);
         }
+
+        /// <summary>
+        /// SEPARATE.RSP, REJECT.RSP 등 다른 Control 메시지 추가 시 동일 패턴 사용
+        /// </summary>
     }
 }

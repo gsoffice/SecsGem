@@ -53,9 +53,9 @@ namespace SecsGemTester
 
         private void button4_Click(object sender, EventArgs e)
         {
-            _gemApi.AddSvid(0, "SVID1", "A");
-            _gemApi.AddSvid(0, "SVID2", "U4");
-            _gemApi.AddSvid(0, "SVID3", "L");            
+            _gemApi.AddSvid(0, "SVID1", "A", "");
+            _gemApi.AddSvid(1, "SVID2", "U4", "");
+            _gemApi.AddSvid(2, "SVID3", "L", "");            
         }
     }
 }

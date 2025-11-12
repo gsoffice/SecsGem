@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SecsGemLib")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+30b52ae757e922e6055fe9a40a4a4318cd46b9fa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9ce0202a46453cdebcb6fe51dafd693a337e1c4")]
 [assembly: System.Reflection.AssemblyProductAttribute("SecsGemLib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SecsGemLib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

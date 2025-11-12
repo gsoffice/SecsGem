@@ -1,39 +1,88 @@
-﻿using SecsGemLib.Utils;
-
-namespace SecsGemLib.Core
+﻿namespace SecsGemLib.Core
 {
     public static class MessageInspector
     {
-        public static bool IsControlMsg(byte[] data)
+        /// <summary>
+        /// Control Message 여부 확인 (e.g. SELECT, LINKTEST 등)
+        /// </summary>
+        public static bool IsControlMsg(Message msg)
         {
-            if (data == null || data.Length < 14) return false;
-            byte sType = data[9]; // length(4) + header(10) 구조 기준: index 8 = PType
-            return sType != 0x00;
+            if (msg == null) return false;
+            return msg.SType != 0x00;
         }
 
-        public static bool IsDataMsg(byte[] data)
+        /// <summary>
+        /// Data Message 여부 확인 (e.g. SxFy 데이터 메시지)
+        /// </summary>
+        public static bool IsDataMsg(Message msg)
         {
-            if (data == null || data.Length < 14) return false;
-            byte sType = data[9];
-            return sType == 0x00;
+            if (msg == null) return false;
+            return msg.SType == 0x00;
         }
 
-        public static byte GetSType(byte[] data)
+        /// <summary>
+        /// SType 반환
+        /// </summary>
+        public static byte GetSType(Message msg)
         {
-            if (data == null || data.Length < 10) return 0;
-            return data[9];
+            return msg?.SType ?? 0x00;
         }
 
-        public static ushort GetSessionId(byte[] data)
+        /// <summary>
+        /// Session ID 반환
+        /// </summary>
+        public static ushort GetSessionId(Message msg)
         {
-            if (data == null || data.Length < 6) return 0;
-            return ByteHelper.ReadBE16(data[4], data[5]);
+            return msg?.DeviceId ?? 0;
         }
 
-        public static uint GetSystemBytes(byte[] data)
+        /// <summary>
+        /// System Bytes 반환
+        /// </summary>
+        public static uint GetSystemBytes(Message msg)
         {
-            if (data == null || data.Length < 14) return 0;
-            return ByteHelper.ReadBE32(data[10], data[11], data[12], data[13]);
+            return msg?.SystemBytes ?? 0;
+        }
+
+        /// <summary>
+        /// Body가 리스트(L) 타입인지 확인
+        /// </summary>
+        private static bool HasList(Message msg)
+        {
+            if (msg?.Body == null)
+                return false;
+
+            return msg.Body.Format == MessageItem.DataFormat.L;
+        }
+
+        /// <summary>
+        /// Body가 리스트 타입이고, 리스트 내 아이템이 0개인지 확인
+        /// </summary>
+        public static bool IsEmptyList(Message msg)
+        {
+            if (!HasList(msg))
+                return false;
+
+            return msg.Body.Items == null || msg.Body.Items.Count == 0;
+        }
+
+        public static List<long> ExtractSvidList(Message msg)
+        {
+            var list = new List<long>();
+
+            if (msg?.Body == null || msg.Body.Items.Count == 0)
+                return list; // 빈 요청이면 전체 요청 의미
+
+            foreach (var item in msg.Body.Items)
+            {
+                if (item.Data != null && item.Data.Length > 0)
+                {
+                    long val = BitConverter.ToUInt32(item.Data.Reverse().ToArray(), 0); // Big-endian
+                    list.Add(val);
+                }
+            }
+
+            return list;
         }
     }
 }

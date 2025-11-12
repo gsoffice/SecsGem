@@ -10,3 +10,15 @@ D:\Projects\C#\SecsGemSolution\SecsGemLib\obj\Debug\net8.0\refint\SecsGemLib.dll
 D:\Projects\C#\SecsGemSolution\SecsGemLib\obj\Debug\net8.0\SecsGemLib.pdb
 D:\Projects\C#\SecsGemSolution\SecsGemLib\obj\Debug\net8.0\ref\SecsGemLib.dll
 D:\Projects\C#\SecsGemSolution\SecsGemLib\obj\Debug\net8.0\SecsGemLib.sourcelink.json
+D:\00_Projects\C#\SecsGem\SecsGemLib\obj\Debug\net8.0\SecsGemLib.GeneratedMSBuildEditorConfig.editorconfig
+D:\00_Projects\C#\SecsGem\SecsGemLib\obj\Debug\net8.0\SecsGemLib.AssemblyInfoInputs.cache
+D:\00_Projects\C#\SecsGem\SecsGemLib\obj\Debug\net8.0\SecsGemLib.AssemblyInfo.cs
+D:\00_Projects\C#\SecsGem\SecsGemLib\obj\Debug\net8.0\SecsGemLib.csproj.CoreCompileInputs.cache
+D:\00_Projects\C#\SecsGem\SecsGemLib\obj\Debug\net8.0\SecsGemLib.sourcelink.json
+D:\00_Projects\C#\SecsGem\SecsGemLib\obj\Debug\net8.0\SecsGemLib.dll
+D:\00_Projects\C#\SecsGem\SecsGemLib\obj\Debug\net8.0\refint\SecsGemLib.dll
+D:\00_Projects\C#\SecsGem\SecsGemLib\obj\Debug\net8.0\SecsGemLib.pdb
+D:\00_Projects\C#\SecsGem\SecsGemLib\bin\Debug\net8.0\SecsGemLib.deps.json
+D:\00_Projects\C#\SecsGem\SecsGemLib\bin\Debug\net8.0\SecsGemLib.dll
+D:\00_Projects\C#\SecsGem\SecsGemLib\bin\Debug\net8.0\SecsGemLib.pdb
+D:\00_Projects\C#\SecsGem\SecsGemLib\obj\Debug\net8.0\ref\SecsGemLib.dll
