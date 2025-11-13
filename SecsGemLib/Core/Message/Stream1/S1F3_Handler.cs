@@ -5,10 +5,10 @@ namespace SecsGemLib.Core
     [Handler(1, 3)]   // S1F3 Selected
     public class S1F3_Handler : IMessageHandler
     {
-        public Message Handle(Message req)
+        public Message Handle(Message msg)
         {
             // ① 요청받은 SVID 리스트 추출 (빈 리스트면 전체 SVID 응답)
-            List<long> requested = MessageInspector.ExtractSvidList(req);
+            List<long> requested = MessageInspector.ExtractSvidList(msg);
 
             IEnumerable<MessageItem> targets =
                 (requested.Count == 0)
@@ -44,7 +44,7 @@ namespace SecsGemLib.Core
             MessageItem body = MessageItem.L(svItems.ToArray());
 
             // ④ 요청 기반으로 응답 메시지 생성 (S1F4)
-            return Message.Build(req, body);
+            return Message.BuildSecondaryMsg(msg, body);
         }
     }
 }

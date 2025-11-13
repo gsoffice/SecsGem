@@ -1,5 +1,6 @@
 ﻿using SecsGemLib.Core;
 using SecsGemLib.Gem.Variables;
+using SecsGemLib.Gem.Events;
 using System.Text;
 
 namespace SecsGemLib
@@ -99,6 +100,17 @@ namespace SecsGemLib
         public void AddSvid(long svid, string name, string format, string unit)
         {
             SvidTable.Add(svid, name, format, unit);
+        }
+
+        public void AddCeid(int ceid, string name)
+        {
+            CeidTable.Add(ceid, name);
+        }
+
+        public async void SendEventReport(int ceid)
+        {
+            Message msg = S6F11.Build(1001);
+            await _hsms.SendAsync(msg);
         }
     }
 }

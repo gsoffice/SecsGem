@@ -30,7 +30,7 @@ namespace SecsGemLib.Core
         // ----------------------------------------------------
         // Primary 메시지 생성
         // ----------------------------------------------------
-        public static Message Build(int stream, int function, bool wbit, MessageItem body)
+        public static Message BuildPrimaryMsg(int stream, int function, bool wbit, MessageItem body)
         {
             var msg = new Message
             {
@@ -51,7 +51,7 @@ namespace SecsGemLib.Core
         // ----------------------------------------------------
         // Secondary(응답) 메시지 생성
         // ----------------------------------------------------
-        public static Message Build(Message request, MessageItem body)
+        public static Message BuildSecondaryMsg(Message request, MessageItem body)
         {
             var msg = new Message
             {
@@ -72,7 +72,7 @@ namespace SecsGemLib.Core
         // ----------------------------------------------------
         // Control(응답) 메시지 생성
         // ----------------------------------------------------
-        public static Message BuildControl(Message request)
+        public static Message BuildControlMsg(Message request)
         {
             var msg = new Message
             {

@@ -2,12 +2,12 @@
 
 namespace SecsGemLib.Gem.Events
 {
-    public class CeidTable
+    public static class CeidTable
     {
-        private readonly Dictionary<int, string> _ceids = new();
+        private static readonly Dictionary<int, string> _ceids = new();
 
-        public void Add(int ceid, string name) => _ceids[ceid] = name;
-        public string GetName(int ceid) => _ceids.TryGetValue(ceid, out var n) ? n : null;
-        public IEnumerable<KeyValuePair<int, string>> GetAll() => _ceids;
+        public static void Add(int ceid, string name) => _ceids[ceid] = name;
+        public static string GetName(int ceid) => _ceids.TryGetValue(ceid, out var n) ? n : null;
+        public static IEnumerable<KeyValuePair<int, string>> GetAll() => _ceids;
     }
 }

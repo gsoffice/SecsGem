@@ -12,7 +12,7 @@
                 MessageItem.A("3.4.2.230")         // SOFTREV
             );
 
-            _message = Message.Build(
+            _message = Message.BuildPrimaryMsg(
                 stream: 1,
                 function: 13,
                 wbit: true,

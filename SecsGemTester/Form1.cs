@@ -82,5 +82,44 @@ namespace SecsGemTester
                 _gemApi.AddSvid(svid, name, fmt, "");
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string filePath = "DATA\\VSP_CEID.txt";
+
+            if (!File.Exists(filePath))
+                throw new FileNotFoundException("SVID 파일을 찾을 수 없습니다.", filePath);
+
+            var lines = File.ReadAllLines(filePath);
+
+            foreach (var line in lines)
+            {
+                // 빈 줄 / 주석 스킵
+                if (string.IsNullOrWhiteSpace(line))
+                    continue;
+
+                if (line.StartsWith("#") || line.StartsWith("//"))
+                    continue;
+
+                // 공백 기준 분리
+                var parts = line.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length < 2)
+                    continue; // 잘못된 형식
+
+                int ceid = int.Parse(parts[0]);
+                string name = parts[1];
+
+                _gemApi.AddCeid(ceid, name);
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            int value;
+            if (int.TryParse(textBox1.Text, out value))
+            {
+                _gemApi.SendEventReport(value);
+            }                
+        }
     }
 }

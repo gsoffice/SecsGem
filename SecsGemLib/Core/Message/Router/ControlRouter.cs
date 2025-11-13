@@ -34,7 +34,7 @@
                 Body = body
             };
 
-            return Message.BuildControl(rsp);
+            return Message.BuildControlMsg(rsp);
         }
 
         private static Message BuildLinktestRsp(Message req)
@@ -51,7 +51,7 @@
                 Body = null
             };
 
-            return Message.BuildControl(rsp);
+            return Message.BuildControlMsg(rsp);
         }
     }
 }

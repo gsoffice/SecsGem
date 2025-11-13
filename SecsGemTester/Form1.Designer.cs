@@ -33,6 +33,9 @@
             button3 = new Button();
             richTextBox1 = new RichTextBox();
             button4 = new Button();
+            button5 = new Button();
+            button6 = new Button();
+            textBox1 = new TextBox();
             SuspendLayout();
             // 
             // button1
@@ -84,11 +87,41 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
+            // button5
+            // 
+            button5.Location = new Point(93, 70);
+            button5.Name = "button5";
+            button5.Size = new Size(107, 23);
+            button5.TabIndex = 5;
+            button5.Text = "Add Ceids";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(66, 99);
+            button6.Name = "button6";
+            button6.Size = new Size(134, 23);
+            button6.TabIndex = 6;
+            button6.Text = "Send Event Report";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(3, 99);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(57, 23);
+            textBox1.TabIndex = 7;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(959, 524);
+            Controls.Add(textBox1);
+            Controls.Add(button6);
+            Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(richTextBox1);
             Controls.Add(button3);
@@ -97,6 +130,7 @@
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -106,5 +140,8 @@
         private Button button3;
         private RichTextBox richTextBox1;
         private Button button4;
+        private Button button5;
+        private Button button6;
+        private TextBox textBox1;
     }
 }

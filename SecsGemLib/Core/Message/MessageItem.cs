@@ -13,23 +13,23 @@ namespace SecsGemLib.Core
         public enum DataFormat : byte
         {
             L = 0x00,
-            B = 0x20,
-            BOOLEAN = 0x24,
-            A = 0x40,
-            JIS = 0x44,
+            B = 0x10,
+            BOOLEAN = 0x11,
+            A = 0x20,
+            JIS = 0x21,
+            
+            I1 = 0x31,
+            I2 = 0x32,
+            I4 = 0x34,
+            I8 = 0x30,
 
-            I8 = 0x60,
-            I4 = 0x64,
-            I2 = 0x68,
-            I1 = 0x6C,
+            F4 = 0x44,
+            F8 = 0x40,
 
-            F8 = 0x70,
-            F4 = 0x74,
-
-            U8 = 0x80,
+            U1 = 0x51,
+            U2 = 0xA8,
             U4 = 0xB0,
-            U2 = 0x88,
-            U1 = 0x8C
+            U8 = 0x50            
         }
 
         // ===============================================================
@@ -44,7 +44,87 @@ namespace SecsGemLib.Core
         public long? Svid { get; set; }
         public string? Name { get; set; }
         public string? Unit { get; set; }
-        public object? RawValue { get; set; }
+        public object? _rawValue { get; set; }
+
+        private object _data;
+
+        public object RawValue
+        {
+            get => _rawValue;
+            set => _rawValue = CoerceRawValue(value);
+        }        
+
+        private object CoerceRawValue(object raw)
+        {
+            if (raw == null)
+                return GetDefaultForFormat();
+
+            try
+            {
+                return Format switch
+                {
+                    DataFormat.U1 => Convert.ToByte(raw),
+                    DataFormat.U2 => Convert.ToUInt16(raw),
+                    DataFormat.U4 => Convert.ToUInt32(raw),
+                    DataFormat.U8 => Convert.ToUInt64(raw),
+
+                    DataFormat.I1 => Convert.ToSByte(raw),
+                    DataFormat.I2 => Convert.ToInt16(raw),
+                    DataFormat.I4 => Convert.ToInt32(raw),
+                    DataFormat.I8 => Convert.ToInt64(raw),
+
+                    DataFormat.F4 => Convert.ToSingle(raw),
+                    DataFormat.F8 => Convert.ToDouble(raw),
+
+                    DataFormat.BOOLEAN => Convert.ToBoolean(raw),
+
+                    DataFormat.A => raw.ToString() ?? "",
+                    DataFormat.JIS => raw.ToString() ?? "",
+
+                    // B 타입은 byte 변환 시도
+                    DataFormat.B => raw,
+
+                    // L 타입은 MessageItem 리스트 그대로 둠
+                    DataFormat.L => raw,
+
+                    _ => raw
+                };
+            }
+            catch
+            {
+                return GetDefaultForFormat();
+            }
+        }
+
+        private object GetDefaultForFormat()
+        {
+            return Format switch
+            {
+                DataFormat.U1 => (byte)0,
+                DataFormat.U2 => (ushort)0,
+                DataFormat.U4 => (uint)0,
+                DataFormat.U8 => (ulong)0,
+
+                DataFormat.I1 => (sbyte)0,
+                DataFormat.I2 => (short)0,
+                DataFormat.I4 => (int)0,
+                DataFormat.I8 => (long)0,
+
+                DataFormat.F4 => 0f,
+                DataFormat.F8 => 0d,
+
+                DataFormat.BOOLEAN => false,
+                DataFormat.B => Array.Empty<byte>(),
+
+                DataFormat.A => "",
+                DataFormat.JIS => "",
+
+                DataFormat.L => new List<MessageItem>(),
+
+                _ => ""
+            };
+        }
+
 
         public MessageItem(DataFormat fmt) => Format = fmt;
 
@@ -53,100 +133,80 @@ namespace SecsGemLib.Core
         // ===============================================================
         public void UpdateDataFromRaw()
         {
-            if (RawValue == null)
-            {
-                Data = Array.Empty<byte>();
-                return;
-            }
+            var coerced = CoerceRawValue(RawValue);
 
             switch (Format)
             {
-                // ---------------- LIST (L) ----------------
                 case DataFormat.L:
-                    if (RawValue is IEnumerable<MessageItem> list)
+                    if (coerced is IEnumerable<MessageItem> list)
                         Items = list.ToList();
-                    else if (RawValue is MessageItem single)
-                        Items = new List<MessageItem> { single };
                     else
                         Items = new List<MessageItem>();
-
-                    Data = Array.Empty<byte>(); // L 타입은 Data 대신 Items 사용
+                    Data = Array.Empty<byte>();
                     return;
 
-                // ---------------- BYTE ARRAY (B) ----------------
+                case DataFormat.A:
+                    Data = Encoding.ASCII.GetBytes(coerced.ToString() ?? "");
+                    return;
+
+                case DataFormat.JIS:
+                    Data = Encoding.GetEncoding("shift_jis").GetBytes(coerced.ToString() ?? "");
+                    return;
+
+                case DataFormat.BOOLEAN:
+                    Data = new[] { (byte)((bool)coerced ? 1 : 0) };
+                    return;
+
                 case DataFormat.B:
-                    if (RawValue is byte[] bArr)
+                    if (coerced is byte[] bArr)
                         Data = bArr;
-                    else if (RawValue is IEnumerable<byte> bEnum)
+                    else if (coerced is IEnumerable<byte> bEnum)
                         Data = bEnum.ToArray();
                     else
-                        Data = new byte[] { Convert.ToByte(RawValue) };
+                        Data = Array.Empty<byte>();
                     return;
 
-                // ---------------- JIS STRING ----------------
-                case DataFormat.JIS:
-                    Data = Encoding.GetEncoding("shift_jis").GetBytes(RawValue.ToString() ?? "");
-                    return;
-
-                // ---------------- ASCII STRING ----------------
-                case DataFormat.A:
-                    Data = Encoding.ASCII.GetBytes(RawValue.ToString() ?? "");
-                    return;
-
-                // ---------------- BOOLEAN ----------------
-                case DataFormat.BOOLEAN:
-                    Data = new[] { (byte)(Convert.ToBoolean(RawValue) ? 1 : 0) };
-                    return;
-
-                // ---------------- UNSIGNED ----------------
                 case DataFormat.U1:
-                    Data = new[] { Convert.ToByte(RawValue) };
+                    Data = new[] { (byte)coerced };
                     return;
 
                 case DataFormat.U2:
-                    Data = BitConverter.GetBytes(Convert.ToUInt16(RawValue)).Reverse().ToArray();
+                    Data = BitConverter.GetBytes((ushort)coerced).Reverse().ToArray();
                     return;
 
                 case DataFormat.U4:
-                    Data = BitConverter.GetBytes(Convert.ToUInt32(RawValue)).Reverse().ToArray();
+                    Data = BitConverter.GetBytes((uint)coerced).Reverse().ToArray();
                     return;
 
                 case DataFormat.U8:
-                    Data = BitConverter.GetBytes(Convert.ToUInt64(RawValue)).Reverse().ToArray();
+                    Data = BitConverter.GetBytes((ulong)coerced).Reverse().ToArray();
                     return;
 
-                // ---------------- SIGNED ----------------
                 case DataFormat.I1:
-                    Data = new[] { (byte)Convert.ToSByte(RawValue) };
+                    Data = new[] { (byte)(sbyte)coerced };
                     return;
 
                 case DataFormat.I2:
-                    Data = BitConverter.GetBytes(Convert.ToInt16(RawValue)).Reverse().ToArray();
+                    Data = BitConverter.GetBytes((short)coerced).Reverse().ToArray();
                     return;
 
                 case DataFormat.I4:
-                    Data = BitConverter.GetBytes(Convert.ToInt32(RawValue)).Reverse().ToArray();
+                    Data = BitConverter.GetBytes((int)coerced).Reverse().ToArray();
                     return;
 
                 case DataFormat.I8:
-                    Data = BitConverter.GetBytes(Convert.ToInt64(RawValue)).Reverse().ToArray();
+                    Data = BitConverter.GetBytes((long)coerced).Reverse().ToArray();
                     return;
 
-                // ---------------- FLOATING ----------------
                 case DataFormat.F4:
-                    Data = BitConverter.GetBytes(Convert.ToSingle(RawValue)).Reverse().ToArray();
+                    Data = BitConverter.GetBytes((float)coerced).Reverse().ToArray();
                     return;
 
                 case DataFormat.F8:
-                    Data = BitConverter.GetBytes(Convert.ToDouble(RawValue)).Reverse().ToArray();
+                    Data = BitConverter.GetBytes((double)coerced).Reverse().ToArray();
                     return;
-
-                // ---------------- 기타 보호 ----------------
-                default:
-                    throw new NotSupportedException($"Unsupported format {Format} for SVID usage.");
             }
         }
-
 
         // ===============================================================
         // FACTORY METHODS (SECS-II Item Builders)
@@ -311,7 +371,7 @@ namespace SecsGemLib.Core
         private static string FormatDesc(MessageItem item)
         {
             if (string.IsNullOrWhiteSpace(item.Description)) return "";
-            return $"  /** {item.Description} **/";
+            return $"  /** {item.Svid} = {item.Description} **/";
         }
 
         public int NumElements

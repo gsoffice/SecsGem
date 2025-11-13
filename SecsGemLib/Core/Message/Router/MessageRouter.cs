@@ -13,10 +13,9 @@ namespace SecsGemLib.Core
             foreach (var t in types)
             {
                 var attr = t.GetCustomAttribute<HandlerAttribute>();
-                if (attr == null) continue;
 
-                if (!typeof(IMessageHandler).IsAssignableFrom(t))
-                    continue;
+                if (attr == null) continue;
+                if (!typeof(IMessageHandler).IsAssignableFrom(t)) continue;
 
                 var handler = (IMessageHandler)Activator.CreateInstance(t);
                 Register(attr.Stream, attr.Function, handler);
