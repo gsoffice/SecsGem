@@ -7,7 +7,9 @@ namespace SecsGemLib.Core
 {
     public class MessageItem
     {
-        // ---------------- ENUM ----------------
+        // ===============================================================
+        // ENUM : SECS-II DataFormat
+        // ===============================================================
         public enum DataFormat : byte
         {
             L = 0x00,
@@ -15,47 +17,140 @@ namespace SecsGemLib.Core
             BOOLEAN = 0x24,
             A = 0x40,
             JIS = 0x44,
+
             I8 = 0x60,
             I4 = 0x64,
             I2 = 0x68,
             I1 = 0x6C,
+
             F8 = 0x70,
             F4 = 0x74,
+
             U8 = 0x80,
-            //U4 = 0x84,
             U4 = 0xB0,
             U2 = 0x88,
             U1 = 0x8C
         }
 
-        // --------------- PROPERTIES ----------------
+        // ===============================================================
+        // PROPERTIES : SECS Item + (확장) SVID 메타데이터
+        // ===============================================================
         public DataFormat Format { get; set; }
         public List<MessageItem> Items { get; set; } = new();
-        public byte[] Data { get; set; }
+        public byte[] Data { get; set; } = Array.Empty<byte>();
+        public string? Description { get; set; }
 
-        public int NumElements
+        // ---- SVID 메타데이터 ----
+        public long? Svid { get; set; }
+        public string? Name { get; set; }
+        public string? Unit { get; set; }
+        public object? RawValue { get; set; }
+
+        public MessageItem(DataFormat fmt) => Format = fmt;
+
+        // ===============================================================
+        // RAW VALUE → SECS-II Data 변환
+        // ===============================================================
+        public void UpdateDataFromRaw()
         {
-            get
+            if (RawValue == null)
             {
-                if (Data == null || Data.Length == 0)
-                    return Format == DataFormat.L ? Items?.Count ?? 0 : 0;
+                Data = Array.Empty<byte>();
+                return;
+            }
 
-                return Format switch
-                {
-                    DataFormat.B or DataFormat.A or DataFormat.JIS => Data.Length,
-                    DataFormat.I1 or DataFormat.U1 or DataFormat.BOOLEAN => Data.Length,
-                    DataFormat.I2 or DataFormat.U2 => Data.Length / 2,
-                    DataFormat.I4 or DataFormat.U4 or DataFormat.F4 => Data.Length / 4,
-                    DataFormat.I8 or DataFormat.U8 or DataFormat.F8 => Data.Length / 8,
-                    DataFormat.L => Items?.Count ?? 0,
-                    _ => 1
-                };
+            switch (Format)
+            {
+                // ---------------- LIST (L) ----------------
+                case DataFormat.L:
+                    if (RawValue is IEnumerable<MessageItem> list)
+                        Items = list.ToList();
+                    else if (RawValue is MessageItem single)
+                        Items = new List<MessageItem> { single };
+                    else
+                        Items = new List<MessageItem>();
+
+                    Data = Array.Empty<byte>(); // L 타입은 Data 대신 Items 사용
+                    return;
+
+                // ---------------- BYTE ARRAY (B) ----------------
+                case DataFormat.B:
+                    if (RawValue is byte[] bArr)
+                        Data = bArr;
+                    else if (RawValue is IEnumerable<byte> bEnum)
+                        Data = bEnum.ToArray();
+                    else
+                        Data = new byte[] { Convert.ToByte(RawValue) };
+                    return;
+
+                // ---------------- JIS STRING ----------------
+                case DataFormat.JIS:
+                    Data = Encoding.GetEncoding("shift_jis").GetBytes(RawValue.ToString() ?? "");
+                    return;
+
+                // ---------------- ASCII STRING ----------------
+                case DataFormat.A:
+                    Data = Encoding.ASCII.GetBytes(RawValue.ToString() ?? "");
+                    return;
+
+                // ---------------- BOOLEAN ----------------
+                case DataFormat.BOOLEAN:
+                    Data = new[] { (byte)(Convert.ToBoolean(RawValue) ? 1 : 0) };
+                    return;
+
+                // ---------------- UNSIGNED ----------------
+                case DataFormat.U1:
+                    Data = new[] { Convert.ToByte(RawValue) };
+                    return;
+
+                case DataFormat.U2:
+                    Data = BitConverter.GetBytes(Convert.ToUInt16(RawValue)).Reverse().ToArray();
+                    return;
+
+                case DataFormat.U4:
+                    Data = BitConverter.GetBytes(Convert.ToUInt32(RawValue)).Reverse().ToArray();
+                    return;
+
+                case DataFormat.U8:
+                    Data = BitConverter.GetBytes(Convert.ToUInt64(RawValue)).Reverse().ToArray();
+                    return;
+
+                // ---------------- SIGNED ----------------
+                case DataFormat.I1:
+                    Data = new[] { (byte)Convert.ToSByte(RawValue) };
+                    return;
+
+                case DataFormat.I2:
+                    Data = BitConverter.GetBytes(Convert.ToInt16(RawValue)).Reverse().ToArray();
+                    return;
+
+                case DataFormat.I4:
+                    Data = BitConverter.GetBytes(Convert.ToInt32(RawValue)).Reverse().ToArray();
+                    return;
+
+                case DataFormat.I8:
+                    Data = BitConverter.GetBytes(Convert.ToInt64(RawValue)).Reverse().ToArray();
+                    return;
+
+                // ---------------- FLOATING ----------------
+                case DataFormat.F4:
+                    Data = BitConverter.GetBytes(Convert.ToSingle(RawValue)).Reverse().ToArray();
+                    return;
+
+                case DataFormat.F8:
+                    Data = BitConverter.GetBytes(Convert.ToDouble(RawValue)).Reverse().ToArray();
+                    return;
+
+                // ---------------- 기타 보호 ----------------
+                default:
+                    throw new NotSupportedException($"Unsupported format {Format} for SVID usage.");
             }
         }
 
-        public MessageItem(DataFormat fmt) { Format = fmt; }
 
-        // ---------------- FACTORY METHODS ----------------
+        // ===============================================================
+        // FACTORY METHODS (SECS-II Item Builders)
+        // ===============================================================
         public static MessageItem L(params MessageItem[] list)
         {
             var item = new MessageItem(DataFormat.L);
@@ -103,7 +198,7 @@ namespace SecsGemLib.Core
             var item = new MessageItem(DataFormat.I2);
             var buf = new List<byte>();
             foreach (var v in values)
-                buf.AddRange(BitConverter.GetBytes(v).Reverse());
+                buf.AddRange(BitConverter.GetBytes(v).Reverse()); // big-endian
             item.Data = buf.ToArray();
             return item;
         }
@@ -131,7 +226,7 @@ namespace SecsGemLib.Core
         public static MessageItem U1(params byte[] values)
         {
             var item = new MessageItem(DataFormat.U1);
-            item.Data = values.ToArray();
+            item.Data = values?.ToArray() ?? Array.Empty<byte>();
             return item;
         }
 
@@ -185,7 +280,9 @@ namespace SecsGemLib.Core
             return item;
         }
 
-        // ---------------- PRETTY PRINT ----------------
+        // ===============================================================
+        // PRETTY PRINT (Description 포함)
+        // ===============================================================
         public override string ToString()
         {
             var sb = new StringBuilder();
@@ -197,100 +294,68 @@ namespace SecsGemLib.Core
         {
             string pad = new string(' ', indent * 2);
 
+            // 리스트 처리
             if (item.Format == DataFormat.L)
             {
-                sb.AppendLine($"{pad}<L[{item.Items.Count}]>");
-                foreach (var child in item.Items)
-                    FormatItem(child, indent + 1, sb);
+                sb.AppendLine($"{pad}<L[{item.Items.Count}]>{FormatDesc(item)}");
+                foreach (var c in item.Items)
+                    FormatItem(c, indent + 1, sb);
                 sb.AppendLine($"{pad}>");
                 return;
             }
 
-            if (item.Format == DataFormat.A || item.Format == DataFormat.JIS)
-            {
-                string value = Encoding.ASCII.GetString(item.Data ?? Array.Empty<byte>());
-                sb.AppendLine($"{pad}<{item.Format}[{item.Data?.Length}/{item.NumElements}] \"{value}\">");
-                return;
-            }
+            string valueStr = ParseValueString(item);
+            sb.AppendLine($"{pad}<{item.Format}[{item.Data.Length}/{item.NumElements}] {valueStr}>{FormatDesc(item)}");
+        }
 
+        private static string FormatDesc(MessageItem item)
+        {
+            if (string.IsNullOrWhiteSpace(item.Description)) return "";
+            return $"  /** {item.Description} **/";
+        }
+
+        public int NumElements
+        {
+            get
+            {
+                if (Format == DataFormat.L) return Items.Count;
+                return itemLengthSwitch(Data?.Length ?? 0);
+            }
+        }
+
+        private int itemLengthSwitch(int len) =>
+            Format switch
+            {
+                DataFormat.U1 or DataFormat.I1 or DataFormat.BOOLEAN => len,
+                DataFormat.U2 or DataFormat.I2 => len / 2,
+                DataFormat.U4 or DataFormat.I4 or DataFormat.F4 => len / 4,
+                DataFormat.U8 or DataFormat.I8 or DataFormat.F8 => len / 8,
+                DataFormat.A or DataFormat.JIS or DataFormat.B => len,
+                _ => 1
+            };
+
+        private static string ParseValueString(MessageItem item)
+        {
             if (item.Data == null || item.Data.Length == 0)
-            {
-                sb.AppendLine($"{pad}<{item.Format}[0/0]>"); return;
-            }
-
-            string valueStr = string.Empty;
+                return "";
 
             try
             {
-                switch (item.Format)
+                return item.Format switch
                 {
-                    case DataFormat.B:
-                        valueStr = BitConverter.ToString(item.Data);
-                        break;
+                    DataFormat.U1 => item.Data[0].ToString(),
+                    DataFormat.U2 => BitConverter.ToUInt16(item.Data.Reverse().ToArray(), 0).ToString(),
+                    DataFormat.U4 => BitConverter.ToUInt32(item.Data.Reverse().ToArray(), 0).ToString(),
 
-                    case DataFormat.BOOLEAN:
-                        valueStr = string.Join(",", item.Data.Select(b => b != 0));
-                        break;
+                    DataFormat.A => Encoding.ASCII.GetString(item.Data),
 
-                    case DataFormat.U1:
-                        valueStr = string.Join(",", item.Data.Select(b => b.ToString()));
-                        break;
-
-                    case DataFormat.U2:
-                        valueStr = string.Join(",", Enumerable.Range(0, item.Data.Length / 2)
-                            .Select(i => BitConverter.ToUInt16(item.Data.Skip(i * 2).Take(2).Reverse().ToArray(), 0)));
-                        break;
-
-                    case DataFormat.U4:
-                        valueStr = string.Join(",", Enumerable.Range(0, item.Data.Length / 4)
-                            .Select(i => BitConverter.ToUInt32(item.Data.Skip(i * 4).Take(4).Reverse().ToArray(), 0)));
-                        break;
-
-                    case DataFormat.U8:
-                        valueStr = string.Join(",", Enumerable.Range(0, item.Data.Length / 8)
-                            .Select(i => BitConverter.ToUInt64(item.Data.Skip(i * 8).Take(8).Reverse().ToArray(), 0)));
-                        break;
-
-                    case DataFormat.I1:
-                        valueStr = string.Join(",", item.Data.Select(b => ((sbyte)b).ToString()));
-                        break;
-
-                    case DataFormat.I2:
-                        valueStr = string.Join(",", Enumerable.Range(0, item.Data.Length / 2)
-                            .Select(i => BitConverter.ToInt16(item.Data.Skip(i * 2).Take(2).Reverse().ToArray(), 0)));
-                        break;
-
-                    case DataFormat.I4:
-                        valueStr = string.Join(",", Enumerable.Range(0, item.Data.Length / 4)
-                            .Select(i => BitConverter.ToInt32(item.Data.Skip(i * 4).Take(4).Reverse().ToArray(), 0)));
-                        break;
-
-                    case DataFormat.I8:
-                        valueStr = string.Join(",", Enumerable.Range(0, item.Data.Length / 8)
-                            .Select(i => BitConverter.ToInt64(item.Data.Skip(i * 8).Take(8).Reverse().ToArray(), 0)));
-                        break;
-
-                    case DataFormat.F4:
-                        valueStr = string.Join(",", Enumerable.Range(0, item.Data.Length / 4)
-                            .Select(i => BitConverter.ToSingle(item.Data.Skip(i * 4).Take(4).Reverse().ToArray(), 0)));
-                        break;
-
-                    case DataFormat.F8:
-                        valueStr = string.Join(",", Enumerable.Range(0, item.Data.Length / 8)
-                            .Select(i => BitConverter.ToDouble(item.Data.Skip(i * 8).Take(8).Reverse().ToArray(), 0)));
-                        break;
-
-                    default:
-                        valueStr = BitConverter.ToString(item.Data);
-                        break;
-                }
+                    _ => BitConverter.ToString(item.Data)
+                };
             }
             catch
             {
-                valueStr = BitConverter.ToString(item.Data);
+                return BitConverter.ToString(item.Data);
             }
-
-            sb.AppendLine($"{pad}<{item.Format}[{item.Data.Length}/{item.NumElements}] {valueStr}>");
         }
     }
 }

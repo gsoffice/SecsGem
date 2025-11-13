@@ -3,36 +3,24 @@
   "WorkspaceRootPath": "D:\\00_Projects\\C#\\SecsGem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|d:\\00_projects\\c#\\secsgem\\secsgemlib\\gemapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|solutionrelative:secsgemlib\\gemapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|d:\\00_projects\\c#\\secsgem\\secsgemlib\\core\\message\\messageitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|solutionrelative:secsgemlib\\core\\message\\messageitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|d:\\00_projects\\c#\\secsgem\\secsgemlib\\core\\message\\router\\messagerouter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|solutionrelative:secsgemlib\\core\\message\\router\\messagerouter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|d:\\00_projects\\c#\\secsgem\\secsgemlib\\core\\message\\stream1\\s1f3_handler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|solutionrelative:secsgemlib\\core\\message\\stream1\\s1f3_handler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|d:\\00_projects\\c#\\secsgem\\secsgemlib\\core\\messagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|solutionrelative:secsgemlib\\core\\messagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|d:\\00_projects\\c#\\secsgem\\secsgemlib\\core\\message\\stream2\\s2f33_handler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|solutionrelative:secsgemlib\\core\\message\\stream2\\s2f33_handler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|d:\\00_projects\\c#\\secsgem\\secsgemlib\\gem\\variables\\svidtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|solutionrelative:secsgemlib\\gem\\variables\\svidtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|d:\\00_projects\\c#\\secsgem\\secsgemlib\\core\\message\\router\\controlrouter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|solutionrelative:secsgemlib\\core\\message\\router\\controlrouter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|d:\\00_projects\\c#\\secsgem\\secsgemlib\\core\\message\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|solutionrelative:secsgemlib\\core\\message\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|d:\\00_projects\\c#\\secsgem\\secsgemlib\\core\\message\\stream1\\s1f13.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|solutionrelative:secsgemlib\\core\\message\\stream1\\s1f13.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|d:\\00_projects\\c#\\secsgem\\secsgemlib\\core\\message\\stream1\\s1f3_handler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|solutionrelative:secsgemlib\\core\\message\\stream1\\s1f3_handler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|d:\\00_projects\\c#\\secsgem\\secsgemlib\\gem\\variables\\variablebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|solutionrelative:secsgemlib\\gem\\variables\\variablebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,106 +46,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GemApi.cs",
-              "DocumentMoniker": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\GemApi.cs",
-              "RelativeDocumentMoniker": "SecsGemLib\\GemApi.cs",
-              "ToolTip": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\GemApi.cs",
-              "RelativeToolTip": "SecsGemLib\\GemApi.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAvwBsAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T03:44:05.43Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "MessageRouter.cs",
-              "DocumentMoniker": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\Message\\Router\\MessageRouter.cs",
-              "RelativeDocumentMoniker": "SecsGemLib\\Core\\Message\\Router\\MessageRouter.cs",
-              "ToolTip": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\Message\\Router\\MessageRouter.cs",
-              "RelativeToolTip": "SecsGemLib\\Core\\Message\\Router\\MessageRouter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T03:43:52.042Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ControlRouter.cs",
-              "DocumentMoniker": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\Message\\Router\\ControlRouter.cs",
-              "RelativeDocumentMoniker": "SecsGemLib\\Core\\Message\\Router\\ControlRouter.cs",
-              "ToolTip": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\Message\\Router\\ControlRouter.cs",
-              "RelativeToolTip": "SecsGemLib\\Core\\Message\\Router\\ControlRouter.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAzwBMAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T03:28:57.743Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Message.cs",
-              "DocumentMoniker": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\Message\\Message.cs",
-              "RelativeDocumentMoniker": "SecsGemLib\\Core\\Message\\Message.cs",
-              "ToolTip": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\Message\\Message.cs",
-              "RelativeToolTip": "SecsGemLib\\Core\\Message\\Message.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAAwFoAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T03:29:30.369Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MessageHandler.cs",
-              "DocumentMoniker": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\MessageHandler.cs",
-              "RelativeDocumentMoniker": "SecsGemLib\\Core\\MessageHandler.cs",
-              "ToolTip": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\MessageHandler.cs",
-              "RelativeToolTip": "SecsGemLib\\Core\\MessageHandler.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAD4vzgAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T03:28:53.053Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "S1F13.cs",
-              "DocumentMoniker": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\Message\\Stream1\\S1F13.cs",
-              "RelativeDocumentMoniker": "SecsGemLib\\Core\\Message\\Stream1\\S1F13.cs",
-              "ToolTip": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\Message\\Stream1\\S1F13.cs",
-              "RelativeToolTip": "SecsGemLib\\Core\\Message\\Stream1\\S1F13.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T03:28:39.67Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "S2F33_Handler.cs",
-              "DocumentMoniker": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\Message\\Stream2\\S2F33_Handler.cs",
-              "RelativeDocumentMoniker": "SecsGemLib\\Core\\Message\\Stream2\\S2F33_Handler.cs",
-              "ToolTip": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\Message\\Stream2\\S2F33_Handler.cs",
-              "RelativeToolTip": "SecsGemLib\\Core\\Message\\Stream2\\S2F33_Handler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T03:27:30.645Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "S1F3_Handler.cs",
               "DocumentMoniker": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\Message\\Stream1\\S1F3_Handler.cs",
               "RelativeDocumentMoniker": "SecsGemLib\\Core\\Message\\Stream1\\S1F3_Handler.cs",
               "ToolTip": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\Message\\Stream1\\S1F3_Handler.cs",
               "RelativeToolTip": "SecsGemLib\\Core\\Message\\Stream1\\S1F3_Handler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAIwBkAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T03:27:29.521Z",
+              "WhenOpened": "2025-11-13T08:22:43.475Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ControlRouter.cs",
+              "DocumentMoniker": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\Message\\Router\\ControlRouter.cs",
+              "RelativeDocumentMoniker": "SecsGemLib\\Core\\Message\\Router\\ControlRouter.cs",
+              "ToolTip": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\Message\\Router\\ControlRouter.cs",
+              "RelativeToolTip": "SecsGemLib\\Core\\Message\\Router\\ControlRouter.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAIA7wBcAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T08:20:11.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SvidTable.cs",
+              "DocumentMoniker": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Gem\\Variables\\SvidTable.cs",
+              "RelativeDocumentMoniker": "SecsGemLib\\Gem\\Variables\\SvidTable.cs",
+              "ToolTip": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Gem\\Variables\\SvidTable.cs",
+              "RelativeToolTip": "SecsGemLib\\Gem\\Variables\\SvidTable.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAywDAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T08:13:07.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MessageItem.cs",
+              "DocumentMoniker": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\Message\\MessageItem.cs",
+              "RelativeDocumentMoniker": "SecsGemLib\\Core\\Message\\MessageItem.cs",
+              "ToolTip": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Core\\Message\\MessageItem.cs",
+              "RelativeToolTip": "SecsGemLib\\Core\\Message\\MessageItem.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAYwD4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T07:52:39.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "VariableBase.cs",
+              "DocumentMoniker": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Gem\\Variables\\VariableBase.cs",
+              "RelativeDocumentMoniker": "SecsGemLib\\Gem\\Variables\\VariableBase.cs",
+              "ToolTip": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\Gem\\Variables\\VariableBase.cs",
+              "RelativeToolTip": "SecsGemLib\\Gem\\Variables\\VariableBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T07:52:37.083Z",
               "EditorCaption": ""
             }
           ]

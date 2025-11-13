@@ -53,9 +53,34 @@ namespace SecsGemTester
 
         private void button4_Click(object sender, EventArgs e)
         {
-            _gemApi.AddSvid(0, "SVID1", "A", "");
-            _gemApi.AddSvid(1, "SVID2", "U4", "");
-            _gemApi.AddSvid(2, "SVID3", "L", "");            
+            string filePath = "DATA\\VSP_SVID.txt";
+
+            if (!File.Exists(filePath))
+                throw new FileNotFoundException("SVID 파일을 찾을 수 없습니다.", filePath);
+
+            var lines = File.ReadAllLines(filePath);
+
+            foreach (var line in lines)
+            {
+                // 빈 줄 / 주석 스킵
+                if (string.IsNullOrWhiteSpace(line))
+                    continue;
+
+                if (line.StartsWith("#") || line.StartsWith("//"))
+                    continue;
+
+                // 공백 기준 분리
+                var parts = line.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length < 3)
+                    continue; // 잘못된 형식
+
+                long svid = long.Parse(parts[0]);
+                string name = parts[1];
+                string fmt = parts[2];
+
+                // unit 정보가 파일에 없으므로 기본 빈 문자열
+                _gemApi.AddSvid(svid, name, fmt, "");
+            }
         }
     }
 }

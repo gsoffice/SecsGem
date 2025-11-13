@@ -48,10 +48,10 @@
                 SType = 0x06,      // LINKTEST.rsp
                 PType = 0x00,
                 SystemBytes = req.SystemBytes,
-                Body = MessageItem.L()
+                Body = null
             };
-            
-            return rsp;
+
+            return Message.BuildControl(rsp);
         }
     }
 }
