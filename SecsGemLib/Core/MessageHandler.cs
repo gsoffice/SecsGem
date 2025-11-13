@@ -1,8 +1,4 @@
-﻿using SecsGemLib.Protocols.ControlMessages;
-using SecsGemLib.Protocols.DataMessages;
-using SecsGemLib.Utils;
-using System;
-using System.Threading.Tasks;
+﻿using SecsGemLib.Utils;
 
 namespace SecsGemLib.Core
 {
@@ -31,44 +27,39 @@ namespace SecsGemLib.Core
             {
                 Logger.Write($"[HSMS] Invalid format: {error}");
                 return;
-            }            
+            }
 
-            // 2) Control / Data 분기
+            Message reply;
             if (MessageInspector.IsControlMsg(msg))
             {
-                byte sType = MessageInspector.GetSType(msg);
-                switch (sType)
+                reply = ControlRouter.Route(msg);
+
+                if (reply != null)
+                    await _comm.SendAsync(reply);  // SELECT.rsp 등 전송
+
+                // ★ SELECT.req 처리 후 S1F13 바로 전송
+                if (msg.SType == 0x01) // SELECT.req
                 {
-                    case 0x01: // Select.req
-                        Logger.Write("[HSMS] Select.req → Select.rsp");
-                        await _comm.SendAsync(ControlFactory.BuildSelectRsp(msg));
-                        var s1f13 = StreamFactory.Build(stream: 1, function: 13);
-                        await Task.Delay(200); // 살짝 텀
-                        await _comm.SendAsync(s1f13);
-                        SelectCompleted?.Invoke();
-                        break;
+                    Logger.Write("[HSMS] Select completed → sending S1F13 ...");
 
-                    case 0x05: // Linktest.req
-                        Logger.Write("[HSMS] Linktest.req → Linktest.rsp");
-                        await _comm.SendAsync(ControlFactory.BuildLinktestRsp(msg));
-                        break;
+                    await Task.Delay(200); // HSMS 권장 짧은 딜레이
 
-                    default:
-                        // 기타 Control은 필요 시 확장
-                        break;
+                    Message s1f13 = new S1F13().Build();
+                    await _comm.SendAsync(s1f13);
+
+                    SelectCompleted?.Invoke();
                 }
+
+                return;
             }
             else if (MessageInspector.IsDataMsg(msg))
             {
-                Message response = MessageRouter.Route(msg);
-
-                if (response is not null)
+                reply = MessageRouter.Route(msg);
+                if (reply != null)
                 {
-                    await _comm.SendAsync(response);
+                    await _comm.SendAsync(reply);
                 }
             }
-
-            //OtherMessageReceived?.Invoke(data); gsseo
         }
     }
 }

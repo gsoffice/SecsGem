@@ -25,7 +25,7 @@ namespace SecsGemLib
         /// </summary>
         public GemApi()
         {
-           
+            MessageRouter.AutoRegisterHandlers();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace SecsGemLib
         {
             _hsms = new Communicator(ip, port, passive);
             _hsmsHandler = new MessageHandler(_hsms);
-            _hsmsHandler.OtherMessageReceived += OnMessageReceived;
+            _hsmsHandler.OtherMessageReceived += OnMessageReceived;            
 
             try
             {

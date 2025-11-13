@@ -1,40 +1,12 @@
-﻿using SecsGemLib.Core;
-using SecsGemLib.Enums;
-using SecsGemLib.Gem.Variables;
-using System.Text;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using SecsGemLib.Gem.Variables;
 
-namespace SecsGemLib.Protocols.DataMessages
+namespace SecsGemLib.Core
 {
-    /// <summary>Stream 1: Equipment Status / Comm</summary>
-    public class Stream1 : IStream
+    [Handler(1, 3)]
+    public class S1F3_Handler : IMessageHandler
     {
-        public int StreamNo => 1;
-
-        public Message BuildMessage(int function)
+        public Message Handle(Message msg)
         {
-            return function switch
-            {                
-                13 => BuildS1F13(),
-                _ => throw new System.NotSupportedException($"S1F{function} not supported")
-            };
-        }
-
-        public Message BuildMessage(Message msg)
-        {
-            return msg.Function switch
-            {
-                3 => BuildS1F4(msg),
-                _ => throw new System.NotSupportedException($"S1F{msg.Function} not supported")
-            };
-        }
-
-        private Message BuildS1F4(Message msg)
-        {
-            int stream = 1;
-            int function = 4;
-            bool wbit = false;
-
             // ① 요청받은 SVID 리스트 추출 (빈 경우 전체)
             List<long> requestedSvids = MessageInspector.ExtractSvidList(msg);
             IEnumerable<VariableBase> targets;
@@ -42,13 +14,13 @@ namespace SecsGemLib.Protocols.DataMessages
             if (requestedSvids.Count == 0)
             {
                 targets = SvidTable.GetAll();
-            }                
+            }
             else
             {
                 targets = requestedSvids
                     .Select(id => SvidTable.Get(id))
                     .Where(v => v != null);
-            }                
+            }
 
             // ② 각 VariableBase를 MessageItem으로 변환
             var svList = new List<MessageItem>();
@@ -91,7 +63,7 @@ namespace SecsGemLib.Protocols.DataMessages
                             svItem = MessageItem.U4(u4);
                         else
                             svItem = MessageItem.U4(0);
-                        break;                        
+                        break;
                     case MessageItem.DataFormat.U8:
                         svItem = MessageItem.U8(Convert.ToUInt64(v.Data));
                         break;
@@ -134,15 +106,8 @@ namespace SecsGemLib.Protocols.DataMessages
             MessageItem body = MessageItem.L(svList.ToArray());
 
             // ④ 메시지 조립
-            return Message.Build(stream, function, wbit, body);
-        }
-
-        private Message BuildS1F13()
-        {
-            MessageItem body = MessageItem.L(MessageItem.A("VSP_88D_NEO2_V3"),
-                                             MessageItem.A("3.4.2.230"));
-
-            return Message.Build(stream: 1, function: 13, wbit: true, body: body);
+            return Message.Build(msg, body);
         }
     }
 }
+

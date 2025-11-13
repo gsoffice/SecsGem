@@ -22,7 +22,8 @@ namespace SecsGemLib.Core
             F8 = 0x70,
             F4 = 0x74,
             U8 = 0x80,
-            U4 = 0x84,
+            //U4 = 0x84,
+            U4 = 0xB0,
             U2 = 0x88,
             U1 = 0x8C
         }
