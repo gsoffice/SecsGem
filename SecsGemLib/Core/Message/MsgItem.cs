@@ -1,42 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
+using SecsGemLib.Enums;
 
 namespace SecsGemLib.Core
 {
-    public class MessageItem
+    public class MsgItem
     {
-        // ===============================================================
-        // ENUM : SECS-II DataFormat
-        // ===============================================================
-        public enum DataFormat : byte
-        {
-            L = 0x00,
-            B = 0x10,
-            BOOLEAN = 0x11,
-            A = 0x20,
-            JIS = 0x21,
-            
-            I1 = 0x31,
-            I2 = 0x32,
-            I4 = 0x34,
-            I8 = 0x30,
-
-            F4 = 0x44,
-            F8 = 0x40,
-
-            U1 = 0x51,
-            U2 = 0xA8,
-            U4 = 0xB0,
-            U8 = 0x50            
-        }
-
         // ===============================================================
         // PROPERTIES : SECS Item + (확장) SVID 메타데이터
         // ===============================================================
         public DataFormat Format { get; set; }
-        public List<MessageItem> Items { get; set; } = new();
+        public List<MsgItem> Items { get; set; } = new();
         public byte[] Data { get; set; } = Array.Empty<byte>();
         public string? Description { get; set; }
 
@@ -47,6 +20,19 @@ namespace SecsGemLib.Core
         public object? _rawValue { get; set; }
 
         private object _data;
+
+        public MsgItem(DataFormat fmt) => Format = fmt;
+
+        /// <summary>
+        /// 기본 Parse: Raw MsgItem을 그대로 복사
+        /// Strong Typed Item(DATAID 등)이 override하여 실제 값 변환 처리
+        /// </summary>
+        public virtual void Parse(MsgItem from)
+        {
+            this.Format = from.Format;
+            this.Data = from.Data.ToArray();
+            this.Items = from.Items.ToList();
+        }
 
         public object RawValue
         {
@@ -119,14 +105,11 @@ namespace SecsGemLib.Core
                 DataFormat.A => "",
                 DataFormat.JIS => "",
 
-                DataFormat.L => new List<MessageItem>(),
+                DataFormat.L => new List<MsgItem>(),
 
                 _ => ""
             };
-        }
-
-
-        public MessageItem(DataFormat fmt) => Format = fmt;
+        }        
 
         // ===============================================================
         // RAW VALUE → SECS-II Data 변환
@@ -138,10 +121,10 @@ namespace SecsGemLib.Core
             switch (Format)
             {
                 case DataFormat.L:
-                    if (coerced is IEnumerable<MessageItem> list)
+                    if (coerced is IEnumerable<MsgItem> list)
                         Items = list.ToList();
                     else
-                        Items = new List<MessageItem>();
+                        Items = new List<MsgItem>();
                     Data = Array.Empty<byte>();
                     return;
 
@@ -211,51 +194,51 @@ namespace SecsGemLib.Core
         // ===============================================================
         // FACTORY METHODS (SECS-II Item Builders)
         // ===============================================================
-        public static MessageItem L(params MessageItem[] list)
+        public static MsgItem L(params MsgItem[] list)
         {
-            var item = new MessageItem(DataFormat.L);
+            var item = new MsgItem(DataFormat.L);
             item.Items.AddRange(list);
             return item;
         }
 
-        public static MessageItem A(string str)
+        public static MsgItem A(string str)
         {
-            var item = new MessageItem(DataFormat.A);
+            var item = new MsgItem(DataFormat.A);
             item.Data = Encoding.ASCII.GetBytes(str ?? "");
             return item;
         }
 
-        public static MessageItem JIS(string str)
+        public static MsgItem JIS(string str)
         {
-            var item = new MessageItem(DataFormat.JIS);
+            var item = new MsgItem(DataFormat.JIS);
             item.Data = Encoding.GetEncoding("shift_jis").GetBytes(str ?? "");
             return item;
         }
 
-        public static MessageItem B(params byte[] bytes)
+        public static MsgItem B(params byte[] bytes)
         {
-            var item = new MessageItem(DataFormat.B);
+            var item = new MsgItem(DataFormat.B);
             item.Data = bytes ?? Array.Empty<byte>();
             return item;
         }
 
-        public static MessageItem BOOLEAN(params bool[] values)
+        public static MsgItem BOOLEAN(params bool[] values)
         {
-            var item = new MessageItem(DataFormat.BOOLEAN);
+            var item = new MsgItem(DataFormat.BOOLEAN);
             item.Data = values.Select(v => (byte)(v ? 1 : 0)).ToArray();
             return item;
         }
 
-        public static MessageItem I1(params sbyte[] values)
+        public static MsgItem I1(params sbyte[] values)
         {
-            var item = new MessageItem(DataFormat.I1);
+            var item = new MsgItem(DataFormat.I1);
             item.Data = values.Select(v => (byte)v).ToArray();
             return item;
         }
 
-        public static MessageItem I2(params short[] values)
+        public static MsgItem I2(params short[] values)
         {
-            var item = new MessageItem(DataFormat.I2);
+            var item = new MsgItem(DataFormat.I2);
             var buf = new List<byte>();
             foreach (var v in values)
                 buf.AddRange(BitConverter.GetBytes(v).Reverse()); // big-endian
@@ -263,9 +246,9 @@ namespace SecsGemLib.Core
             return item;
         }
 
-        public static MessageItem I4(params int[] values)
+        public static MsgItem I4(params int[] values)
         {
-            var item = new MessageItem(DataFormat.I4);
+            var item = new MsgItem(DataFormat.I4);
             var buf = new List<byte>();
             foreach (var v in values)
                 buf.AddRange(BitConverter.GetBytes(v).Reverse());
@@ -273,9 +256,9 @@ namespace SecsGemLib.Core
             return item;
         }
 
-        public static MessageItem I8(params long[] values)
+        public static MsgItem I8(params long[] values)
         {
-            var item = new MessageItem(DataFormat.I8);
+            var item = new MsgItem(DataFormat.I8);
             var buf = new List<byte>();
             foreach (var v in values)
                 buf.AddRange(BitConverter.GetBytes(v).Reverse());
@@ -283,16 +266,16 @@ namespace SecsGemLib.Core
             return item;
         }
 
-        public static MessageItem U1(params byte[] values)
+        public static MsgItem U1(params byte[] values)
         {
-            var item = new MessageItem(DataFormat.U1);
+            var item = new MsgItem(DataFormat.U1);
             item.Data = values?.ToArray() ?? Array.Empty<byte>();
             return item;
         }
 
-        public static MessageItem U2(params ushort[] values)
+        public static MsgItem U2(params ushort[] values)
         {
-            var item = new MessageItem(DataFormat.U2);
+            var item = new MsgItem(DataFormat.U2);
             var buf = new List<byte>();
             foreach (var v in values)
                 buf.AddRange(BitConverter.GetBytes(v).Reverse());
@@ -300,9 +283,9 @@ namespace SecsGemLib.Core
             return item;
         }
 
-        public static MessageItem U4(params uint[] values)
+        public static MsgItem U4(params uint[] values)
         {
-            var item = new MessageItem(DataFormat.U4);
+            var item = new MsgItem(DataFormat.U4);
             var buf = new List<byte>();
             foreach (var v in values)
                 buf.AddRange(BitConverter.GetBytes(v).Reverse());
@@ -310,9 +293,9 @@ namespace SecsGemLib.Core
             return item;
         }
 
-        public static MessageItem U8(params ulong[] values)
+        public static MsgItem U8(params ulong[] values)
         {
-            var item = new MessageItem(DataFormat.U8);
+            var item = new MsgItem(DataFormat.U8);
             var buf = new List<byte>();
             foreach (var v in values)
                 buf.AddRange(BitConverter.GetBytes(v).Reverse());
@@ -320,9 +303,9 @@ namespace SecsGemLib.Core
             return item;
         }
 
-        public static MessageItem F4(params float[] values)
+        public static MsgItem F4(params float[] values)
         {
-            var item = new MessageItem(DataFormat.F4);
+            var item = new MsgItem(DataFormat.F4);
             var buf = new List<byte>();
             foreach (var v in values)
                 buf.AddRange(BitConverter.GetBytes(v).Reverse());
@@ -330,9 +313,9 @@ namespace SecsGemLib.Core
             return item;
         }
 
-        public static MessageItem F8(params double[] values)
+        public static MsgItem F8(params double[] values)
         {
-            var item = new MessageItem(DataFormat.F8);
+            var item = new MsgItem(DataFormat.F8);
             var buf = new List<byte>();
             foreach (var v in values)
                 buf.AddRange(BitConverter.GetBytes(v).Reverse());
@@ -350,7 +333,7 @@ namespace SecsGemLib.Core
             return sb.ToString();
         }
 
-        private static void FormatItem(MessageItem item, int indent, StringBuilder sb)
+        private static void FormatItem(MsgItem item, int indent, StringBuilder sb)
         {
             string pad = new string(' ', indent * 2);
 
@@ -368,7 +351,7 @@ namespace SecsGemLib.Core
             sb.AppendLine($"{pad}<{item.Format}[{item.Data.Length}/{item.NumElements}] {valueStr}>{FormatDesc(item)}");
         }
 
-        private static string FormatDesc(MessageItem item)
+        private static string FormatDesc(MsgItem item)
         {
             if (string.IsNullOrWhiteSpace(item.Description)) return "";
             return $"  /** {item.Svid} = {item.Description} **/";
@@ -394,7 +377,7 @@ namespace SecsGemLib.Core
                 _ => 1
             };
 
-        private static string ParseValueString(MessageItem item)
+        private static string ParseValueString(MsgItem item)
         {
             if (item.Data == null || item.Data.Length == 0)
                 return "";

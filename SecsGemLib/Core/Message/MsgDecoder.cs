@@ -1,11 +1,13 @@
-﻿namespace SecsGemLib.Core
+﻿using SecsGemLib.Enums;
+
+namespace SecsGemLib.Core
 {
-    public static class MessageDecoder
+    public static class MsgDecoder
     {
         /// <summary>
         /// HSMS Raw Data → Message 객체로 디코드
         /// </summary>
-        public static Message Decode(byte[] raw)
+        public static Msg Decode(byte[] raw)
         {
             if (raw == null || raw.Length < 14)
                 throw new ArgumentException("Invalid HSMS message: too short.");
@@ -37,7 +39,7 @@
             // [3] Body
             // ----------------------------
             byte[] body = raw.Skip(14).ToArray();
-            MessageItem secsBody = null;
+            MsgItem secsBody = null;
 
             if (body.Length > 0)
                 secsBody = DecodeItem(body, out _);
@@ -48,7 +50,7 @@
             bool isPrimary = function % 2 == 1;
             bool isSecondary = !isPrimary;
 
-            var msg = new Message
+            var msg = new Msg
             {
                 DeviceId = sessionId,
                 Stream = (byte)stream,
@@ -71,13 +73,13 @@
         // -------------------------------------------------------------------
         // 내부: SECS-II Item 트리 디코딩
         // -------------------------------------------------------------------
-        private static MessageItem DecodeItem(byte[] buffer, out int consumed)
+        private static MsgItem DecodeItem(byte[] buffer, out int consumed)
         {
             consumed = 0;
             if (buffer == null || buffer.Length < 2) return null;
 
             byte fmtAndLen = buffer[0];
-            var format = (MessageItem.DataFormat)(fmtAndLen & 0xFC);
+            var format = (DataFormat)(fmtAndLen & 0xFC);
             int lenLen = fmtAndLen & 0x03;
 
             // 길이값 읽기
@@ -91,9 +93,9 @@
             // ----------------------------
             // 리스트 타입
             // ----------------------------
-            if (format == MessageItem.DataFormat.L)
+            if (format == DataFormat.L)
             {
-                var list = new List<MessageItem>();
+                var list = new List<MsgItem>();
                 int childOffset = offset;
 
                 for (int i = 0; i < dataLength; i++)
@@ -109,7 +111,7 @@
                 }
 
                 consumed = childOffset;
-                return MessageItem.L(list.ToArray());
+                return MsgItem.L(list.ToArray());
             }
             // ----------------------------
             // 일반 데이터 타입
@@ -117,7 +119,7 @@
             else
             {
                 byte[] data = buffer.Skip(offset).Take(dataLength).ToArray();
-                var item = new MessageItem(format);
+                var item = new MsgItem(format);
                 item.Data = data;
                 return item;
             }

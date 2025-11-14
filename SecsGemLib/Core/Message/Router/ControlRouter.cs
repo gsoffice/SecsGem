@@ -2,7 +2,7 @@
 {
     public static class ControlRouter
     {
-        public static Message Route(Message msg)
+        public static Msg Route(Msg msg)
         {
             byte sType = msg.SType;
 
@@ -19,10 +19,10 @@
             }
         }
 
-        private static Message BuildSelectRsp(Message req)
+        private static Msg BuildSelectRsp(Msg req)
         {
-            var body = MessageItem.B(0x00); // Status=0: OK
-            var rsp = new Message
+            var body = MsgItem.B(0x00); // Status=0: OK
+            var rsp = new Msg
             {
                 DeviceId = req.DeviceId,
                 Stream = 0,
@@ -34,12 +34,12 @@
                 Body = body
             };
 
-            return Message.BuildControlMsg(rsp);
+            return Msg.BuildControlMsg(rsp);
         }
 
-        private static Message BuildLinktestRsp(Message req)
+        private static Msg BuildLinktestRsp(Msg req)
         {
-            var rsp = new Message
+            var rsp = new Msg
             {
                 DeviceId = req.DeviceId,
                 Stream = 0,
@@ -51,7 +51,7 @@
                 Body = null
             };
 
-            return Message.BuildControlMsg(rsp);
+            return Msg.BuildControlMsg(rsp);
         }
     }
 }

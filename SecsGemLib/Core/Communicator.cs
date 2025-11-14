@@ -111,13 +111,13 @@ namespace SecsGemLib.Core
             }
         }
 
-        public async Task SendAsync(Message msg)
+        public async Task SendAsync(Msg msg)
         {
             if (_stream == null || !_client?.Connected == true) return;
 
             var data = msg.ToBytes();
-            Logger.Write($"[Comm] Tx : {ByteHelper.ToHex(data)}");
-            Logger.Write($"[Comm] Tx : {msg}");
+            Logger.Write($"[HSMS:OUT] {ByteHelper.ToHex(data)}");
+            Logger.Write($"[SECS-II:OUT] {msg}");
             await _stream.WriteAsync(data, 0, data.Length);
         }
 

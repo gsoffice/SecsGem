@@ -2,14 +2,14 @@
 
 namespace SecsGemLib.Core
 {
-    public class MessageHandler
+    public class MsgHandler
     {
         private readonly Communicator _comm;
 
         public event Action? SelectCompleted;
         public event Action<byte[]>? OtherMessageReceived;
 
-        public MessageHandler(Communicator communicator)
+        public MsgHandler(Communicator communicator)
         {
             _comm = communicator;
             _comm.DataReceived += OnDataReceived;
@@ -18,19 +18,28 @@ namespace SecsGemLib.Core
         private async void OnDataReceived(byte[] data)
         {
             // 로그는 일단 무조건 찍기
-            Message msg = MessageDecoder.Decode(data);
-            Logger.Write($"[Comm] Rx : {ByteHelper.ToHex(data)}");
-            Logger.Write($"[Comm] Rx : {msg}");
+            Msg msg = MsgDecoder.Decode(data);
 
-            // 1) 포맷 검증은 raw data로 하는게 맞는듯 나중에 검토 해보기
-            if (!MessageValidator.Validate(data, out string error))
+            // Todo            
+            // 1.포맷 체크            
+            if (!MsgValidator.Validate(data, out string error))
             {
                 Logger.Write($"[HSMS] Invalid format: {error}");
                 return;
             }
 
-            Message reply;
-            if (MessageInspector.IsControlMsg(msg))
+            // 2.메세지 해석 (데이터 저장, 메세지를 해석해서 설명을 로그에 남기기 위해)
+            msg = MsgInterpreter.Interpret(msg);
+
+
+
+            Logger.Write($"[HSMS:IN] {ByteHelper.ToHex(data)}");
+            Logger.Write($"[SECS-II:IN] {msg}");
+
+
+
+            Msg reply;
+            if (MsgInspector.IsControlMsg(msg))
             {
                 reply = ControlRouter.Route(msg);
 
@@ -44,7 +53,7 @@ namespace SecsGemLib.Core
 
                     await Task.Delay(200); // HSMS 권장 짧은 딜레이
 
-                    Message s1f13 = new S1F13().Build();
+                    Msg s1f13 = new S1F13().Build();
                     await _comm.SendAsync(s1f13);
 
                     SelectCompleted?.Invoke();
@@ -52,9 +61,9 @@ namespace SecsGemLib.Core
 
                 return;
             }
-            else if (MessageInspector.IsDataMsg(msg))
+            else if (MsgInspector.IsDataMsg(msg))
             {
-                reply = MessageRouter.Route(msg);
+                reply = MsgRouter.Route(msg);
                 if (reply != null)
                 {
                     await _comm.SendAsync(reply);

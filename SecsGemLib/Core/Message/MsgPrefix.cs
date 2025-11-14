@@ -2,7 +2,7 @@
 
 namespace SecsGemLib.Core
 {
-    public static class MessagePrefix
+    public static class MsgPrefix
     {
         public static byte[] Build(byte[] header, byte[] body)
         {

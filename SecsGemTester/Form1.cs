@@ -16,14 +16,17 @@ namespace SecsGemTester
 
         private void Logger_LogWritten(string log)
         {
+            log += '\n';
             // ?? UI 스레드 아닌 경우 Invoke 필요
             if (InvokeRequired)
             {
-                Invoke(new Action(() => richTextBox1.AppendText(log + Environment.NewLine)));
+                //Invoke(new Action(() => richTextBox1.AppendText(log + Environment.NewLine)));
+                Invoke(new Action(() => richTextBox1.AppendText(log)));
             }
             else
             {
-                richTextBox1.AppendText(log + Environment.NewLine);
+                //richTextBox1.AppendText(log + Environment.NewLine);
+                richTextBox1.AppendText(log);
             }
         }
 
@@ -34,6 +37,9 @@ namespace SecsGemTester
             _gemApi.Disconnected += () => Console.WriteLine("Disconnected!");
             _gemApi.MessageReceived += OnMessageReceived;
             bool ok = await _gemApi.ConnectAsync("127.0.0.1", 5000, true);
+
+            AddSvids();
+            AddCeids();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -52,6 +58,11 @@ namespace SecsGemTester
         }
 
         private void button4_Click(object sender, EventArgs e)
+        {
+            AddSvids();
+        }
+
+        private void AddSvids()
         {
             string filePath = "DATA\\VSP_SVID.txt";
 
@@ -84,6 +95,11 @@ namespace SecsGemTester
         }
 
         private void button5_Click(object sender, EventArgs e)
+        {
+            AddCeids();
+        }
+
+        private void AddCeids()
         {
             string filePath = "DATA\\VSP_CEID.txt";
 

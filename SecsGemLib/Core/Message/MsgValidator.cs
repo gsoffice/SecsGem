@@ -2,7 +2,7 @@
 
 namespace SecsGemLib.Core
 {
-    public static class MessageValidator
+    public static class MsgValidator
     {
         public static bool Validate(byte[] data, out string error)
         {

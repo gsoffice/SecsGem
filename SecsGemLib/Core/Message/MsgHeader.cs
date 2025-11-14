@@ -1,6 +1,6 @@
 ﻿namespace SecsGemLib.Core
 {
-    public static class MessageHeader
+    public static class MsgHeader
     {
         // PType=0x00(Control)/0x01(Data) 는 이 배열 내 4~5 바이트 위치가 아니라,
         // 여기서는 Data 메시지 관점의 10바이트 SECS-II 헤더를 구성한다고 가정.

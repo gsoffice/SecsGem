@@ -6,22 +6,6 @@ using System.Threading.Tasks;
 
 namespace SecsGemLib.Utils
 {
-    //public static class Logger
-    //{
-    //    private static readonly object _lock = new();
-    //    private static string _logFile = "SecsGemLog.txt";
-
-    //    public static void Write(string msg)
-    //    {
-    //        string line = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}] {msg}";
-    //        lock (_lock)
-    //        {
-    //            Console.WriteLine(line);
-    //            File.AppendAllText(_logFile, line + Environment.NewLine);
-    //        }
-    //    }
-    //}
-
     public static class Logger
     {
         private static readonly object _lock = new();

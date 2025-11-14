@@ -11,7 +11,7 @@ namespace SecsGemLib
     public class GemApi
     {
         private Communicator _hsms;
-        private MessageHandler _hsmsHandler;
+        private MsgHandler _hsmsHandler;
         public event Action<byte[]> OnMessageReceive;
 
         public bool IsConnected => _hsms?.IsConnected ?? false;
@@ -26,7 +26,7 @@ namespace SecsGemLib
         /// </summary>
         public GemApi()
         {
-            MessageRouter.AutoRegisterHandlers();
+            MsgRouter.AutoRegisterHandlers();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace SecsGemLib
         public async Task<bool> ConnectAsync(string ip, int port, bool passive = false)
         {
             _hsms = new Communicator(ip, port, passive);
-            _hsmsHandler = new MessageHandler(_hsms);
+            _hsmsHandler = new MsgHandler(_hsms);
             _hsmsHandler.OtherMessageReceived += OnMessageReceived;            
 
             try
@@ -109,7 +109,7 @@ namespace SecsGemLib
 
         public async void SendEventReport(int ceid)
         {
-            Message msg = S6F11.Build(1001);
+            Msg msg = S6F11.Build(ceid);
             await _hsms.SendAsync(msg);
         }
     }

@@ -3,8 +3,19 @@ using System.Text;
 
 namespace SecsGemLib.Core
 {
-    public class Message
+    public class Msg
     {
+        // prefix
+
+        // 헤더
+
+        // 바디
+
+
+
+
+
+
         // -----------------------------
         // HSMS / SECS-II Header Fields
         // -----------------------------
@@ -19,7 +30,7 @@ namespace SecsGemLib.Core
         // -----------------------------
         // SECS-II Message Content
         // -----------------------------
-        public MessageItem Body { get; set; }
+        public MsgItem Body { get; set; }
         public bool IsPrimary => WBit;
         public bool IsSecondary => !WBit;
 
@@ -30,9 +41,9 @@ namespace SecsGemLib.Core
         // ----------------------------------------------------
         // Primary 메시지 생성
         // ----------------------------------------------------
-        public static Message BuildPrimaryMsg(int stream, int function, bool wbit, MessageItem body)
+        public static Msg BuildPrimaryMsg(int stream, int function, bool wbit, MsgItem body)
         {
-            var msg = new Message
+            var msg = new Msg
             {
                 Stream = (byte)stream,
                 Function = (byte)function,
@@ -51,9 +62,9 @@ namespace SecsGemLib.Core
         // ----------------------------------------------------
         // Secondary(응답) 메시지 생성
         // ----------------------------------------------------
-        public static Message BuildSecondaryMsg(Message request, MessageItem body)
+        public static Msg BuildSecondaryMsg(Msg request, MsgItem body)
         {
-            var msg = new Message
+            var msg = new Msg
             {
                 DeviceId = request.DeviceId,
                 Stream = request.Stream,
@@ -72,9 +83,9 @@ namespace SecsGemLib.Core
         // ----------------------------------------------------
         // Control(응답) 메시지 생성
         // ----------------------------------------------------
-        public static Message BuildControlMsg(Message request)
+        public static Msg BuildControlMsg(Msg request)
         {
-            var msg = new Message
+            var msg = new Msg
             {
                 DeviceId = request.DeviceId,
                 Stream = 0,
@@ -95,9 +106,9 @@ namespace SecsGemLib.Core
         // ----------------------------------------------------
         private void Encode()
         {
-            _body = MessageEncoder.EncodeItem(Body);
-            _header = MessageHeader.Build(DeviceId, Stream, Function, WBit, SystemBytes, SType);
-            _prefix = MessagePrefix.Build(_header, _body);
+            _body = MsgEncoder.EncodeItem(Body);
+            _header = MsgHeader.Build(DeviceId, Stream, Function, WBit, SystemBytes, SType);
+            _prefix = MsgPrefix.Build(_header, _body);
         }
 
         public byte[] ToBytes() => _prefix.Concat(_header).Concat(_body).ToArray();
@@ -108,8 +119,7 @@ namespace SecsGemLib.Core
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.AppendLine($"[S{Stream}F{Function}{(WBit ? "W" : "")}]");
-            sb.AppendLine($"SType={SType:X2}, SystemBytes={SystemBytes}, DeviceId={DeviceId}");
+            sb.AppendLine($"[S{Stream}F{Function}{(WBit ? "W" : "")}] SType={SType:X2}, SystemBytes={SystemBytes}, DeviceId={DeviceId}");            
             if (Body != null) sb.Append(Body.ToString());
             return sb.ToString();
         }

@@ -1,15 +1,14 @@
-﻿using System;
-using System.Linq;
+﻿using SecsGemLib.Enums;
 
 namespace SecsGemLib.Core
 {
-    public static class MessageEncoder
+    public static class MsgEncoder
     {
-        public static byte[] EncodeItem(MessageItem item)
+        public static byte[] EncodeItem(MsgItem item)
         {
             if (item == null) return Array.Empty<byte>();
 
-            if (item.Format == MessageItem.DataFormat.L)
+            if (item.Format == DataFormat.L)
             {
                 var encodedChildren = item.Items.SelectMany(EncodeItem).ToArray();
                 var lenBytes = EncodeLength(item.Items.Count);
