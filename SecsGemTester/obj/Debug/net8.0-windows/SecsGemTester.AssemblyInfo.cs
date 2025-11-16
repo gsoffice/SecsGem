@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SecsGemTester")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+acbe4f9362a05c2a875fe8613d4f96095c5c2fcf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09dd4531105fb76cc6b3975cbd09f5b2fb3a451a")]
 [assembly: System.Reflection.AssemblyProductAttribute("SecsGemTester")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SecsGemTester")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

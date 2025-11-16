@@ -2,13 +2,15 @@
 {
     public enum FieldRole
     {
-        None,
-        DataId,
-        Ceid,
-        RptId,
-        Vid,
-        Svid,
-        Alid
-        // 필요 시 확장
+        NONE,
+        DATAID,
+        CEID,
+        RPTID,
+        VID,
+        SVID,
+        ALID,
+        DRACK,
+        LRACK,
+        ACKC6
     }
 }

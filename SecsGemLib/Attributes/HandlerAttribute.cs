@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SecsGemLib.Core
+﻿namespace SecsGemLib.Core
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class HandlerAttribute : Attribute

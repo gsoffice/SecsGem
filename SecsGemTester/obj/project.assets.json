@@ -27,23 +27,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gsseo\\.nuget\\packages\\": {},
+    "C:\\Users\\USER\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\00_Projects\\C#\\SecsGem\\SecsGemTester\\SecsGemTester.csproj",
+      "projectUniqueName": "D:\\Projects\\C#\\SecsGemSolution\\SecsGemTester\\SecsGemTester.csproj",
       "projectName": "SecsGemTester",
-      "projectPath": "D:\\00_Projects\\C#\\SecsGem\\SecsGemTester\\SecsGemTester.csproj",
-      "packagesPath": "C:\\Users\\gsseo\\.nuget\\packages\\",
-      "outputPath": "D:\\00_Projects\\C#\\SecsGem\\SecsGemTester\\obj\\",
+      "projectPath": "D:\\Projects\\C#\\SecsGemSolution\\SecsGemTester\\SecsGemTester.csproj",
+      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\C#\\SecsGemSolution\\SecsGemTester\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\gsseo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -59,8 +59,8 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\SecsGemLib.csproj": {
-              "projectPath": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\SecsGemLib.csproj"
+            "D:\\Projects\\C#\\SecsGemSolution\\SecsGemLib\\SecsGemLib.csproj": {
+              "projectPath": "D:\\Projects\\C#\\SecsGemSolution\\SecsGemLib\\SecsGemLib.csproj"
             }
           }
         }

@@ -2,6 +2,8 @@
 using SecsGemLib.Gem.Variables;
 using SecsGemLib.Gem.Events;
 using System.Text;
+using SecsGemLib.Message.Objects;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SecsGemLib
 {
@@ -10,11 +12,10 @@ namespace SecsGemLib
     /// </summary>
     public class GemApi
     {
-        private Communicator _hsms;
         private MsgHandler _hsmsHandler;
         public event Action<byte[]> OnMessageReceive;
 
-        public bool IsConnected => _hsms?.IsConnected ?? false;
+        public bool IsConnected => Communicator.IsConnected;
 
         // 외부로 노출할 이벤트
         public event Action Connected;
@@ -27,6 +28,8 @@ namespace SecsGemLib
         public GemApi()
         {
             MsgRouter.AutoRegisterHandlers();
+            MsgDataSaverRegistry.AutoRegister();
+            MsgFormatRegistry.LoadFromFile("DATA\\FORMAT.SML");
         }
 
         /// <summary>
@@ -34,16 +37,16 @@ namespace SecsGemLib
         /// </summary>
         public async Task<bool> ConnectAsync(string ip, int port, bool passive = false)
         {
-            _hsms = new Communicator(ip, port, passive);
-            _hsmsHandler = new MsgHandler(_hsms);
+            Communicator.Configure(ip, port, passive);
+            _hsmsHandler = new MsgHandler();
             _hsmsHandler.OtherMessageReceived += OnMessageReceived;            
 
             try
             {
-                _hsms.Connected += OnConnected;
-                _hsms.Disconnected += () => Disconnected?.Invoke();
+                Communicator.Connected += OnConnected;
+                Communicator.Disconnected += () => Disconnected?.Invoke();
 
-                return await _hsms.ConnectAsync();
+                return await Communicator.ConnectAsync();
             }
             catch (Exception ex)
             {
@@ -85,7 +88,7 @@ namespace SecsGemLib
         /// </summary>
         public void Disconnect()
         {
-            _hsms?.Disconnect();
+            Communicator.Disconnect();
         }
 
         /// <summary>
@@ -110,7 +113,7 @@ namespace SecsGemLib
         public async void SendEventReport(int ceid)
         {
             Msg msg = S6F11.Build(ceid);
-            await _hsms.SendAsync(msg);
+            await Communicator.SendAsync(msg);
         }
     }
 }

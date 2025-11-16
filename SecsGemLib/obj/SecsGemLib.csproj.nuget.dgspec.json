@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\SecsGemLib.csproj": {}
+    "D:\\Projects\\C#\\SecsGemSolution\\SecsGemLib\\SecsGemLib.csproj": {}
   },
   "projects": {
-    "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\SecsGemLib.csproj": {
+    "D:\\Projects\\C#\\SecsGemSolution\\SecsGemLib\\SecsGemLib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\SecsGemLib.csproj",
+        "projectUniqueName": "D:\\Projects\\C#\\SecsGemSolution\\SecsGemLib\\SecsGemLib.csproj",
         "projectName": "SecsGemLib",
-        "projectPath": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\SecsGemLib.csproj",
-        "packagesPath": "C:\\Users\\gsseo\\.nuget\\packages\\",
-        "outputPath": "D:\\00_Projects\\C#\\SecsGem\\SecsGemLib\\obj\\",
+        "projectPath": "D:\\Projects\\C#\\SecsGemSolution\\SecsGemLib\\SecsGemLib.csproj",
+        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\C#\\SecsGemSolution\\SecsGemLib\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\gsseo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
