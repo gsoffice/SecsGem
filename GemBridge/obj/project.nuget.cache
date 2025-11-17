@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "XtSH57ecry4=",
+  "success": true,
+  "projectFilePath": "D:\\00_Projects\\C#\\SecsGem\\GemBridge\\GemBridge.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gsseo\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\8.0.11\\microsoft.dotnet.ilcompiler.8.0.11.nupkg.sha512",
+    "C:\\Users\\gsseo\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.11\\microsoft.net.illink.tasks.8.0.11.nupkg.sha512",
+    "C:\\Users\\gsseo\\.nuget\\packages\\runtime.win-x64.microsoft.dotnet.ilcompiler\\8.0.11\\runtime.win-x64.microsoft.dotnet.ilcompiler.8.0.11.nupkg.sha512",
+    "C:\\Users\\gsseo\\.nuget\\packages\\runtime.win-x64.microsoft.dotnet.ilcompiler\\8.0.11\\runtime.win-x64.microsoft.dotnet.ilcompiler.8.0.11.nupkg.sha512"
+  ],
+  "logs": []
+}

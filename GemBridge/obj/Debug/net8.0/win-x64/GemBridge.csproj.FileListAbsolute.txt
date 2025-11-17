@@ -1,0 +1,16 @@
+D:\00_Projects\C#\SecsGem\GemBridge\bin\Debug\net8.0\win-x64\GemBridge.deps.json
+D:\00_Projects\C#\SecsGem\GemBridge\bin\Debug\net8.0\win-x64\GemBridge.dll
+D:\00_Projects\C#\SecsGem\GemBridge\bin\Debug\net8.0\win-x64\GemBridge.pdb
+D:\00_Projects\C#\SecsGem\GemBridge\bin\Debug\net8.0\win-x64\SecsGemLib.dll
+D:\00_Projects\C#\SecsGem\GemBridge\bin\Debug\net8.0\win-x64\SecsGemLib.pdb
+D:\00_Projects\C#\SecsGem\GemBridge\obj\Debug\net8.0\win-x64\GemBridge.csproj.AssemblyReference.cache
+D:\00_Projects\C#\SecsGem\GemBridge\obj\Debug\net8.0\win-x64\GemBridge.GeneratedMSBuildEditorConfig.editorconfig
+D:\00_Projects\C#\SecsGem\GemBridge\obj\Debug\net8.0\win-x64\GemBridge.AssemblyInfoInputs.cache
+D:\00_Projects\C#\SecsGem\GemBridge\obj\Debug\net8.0\win-x64\GemBridge.AssemblyInfo.cs
+D:\00_Projects\C#\SecsGem\GemBridge\obj\Debug\net8.0\win-x64\GemBridge.csproj.CoreCompileInputs.cache
+D:\00_Projects\C#\SecsGem\GemBridge\obj\Debug\net8.0\win-x64\GemBridge.sourcelink.json
+D:\00_Projects\C#\SecsGem\GemBridge\obj\Debug\net8.0\win-x64\GemBridge.csproj.Up2Date
+D:\00_Projects\C#\SecsGem\GemBridge\obj\Debug\net8.0\win-x64\GemBridge.dll
+D:\00_Projects\C#\SecsGem\GemBridge\obj\Debug\net8.0\win-x64\refint\GemBridge.dll
+D:\00_Projects\C#\SecsGem\GemBridge\obj\Debug\net8.0\win-x64\GemBridge.pdb
+D:\00_Projects\C#\SecsGem\GemBridge\obj\Debug\net8.0\win-x64\ref\GemBridge.dll

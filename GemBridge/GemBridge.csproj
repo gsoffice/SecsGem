@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+
+		<!-- Native DLL 생성 -->
+		<PublishAot>true</PublishAot>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<PlatformTarget>x64</PlatformTarget>
+
+		<!-- DLL 출력 -->
+		<OutputType>Library</OutputType>
+
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+		<!-- AOT를 위해 필요 -->
+		<IlcGenerateCompleteTypeMetadata>true</IlcGenerateCompleteTypeMetadata>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\SecsGemLib\SecsGemLib.csproj" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,5 @@
+EXPORTS
+   DotNetRuntimeDebugHeader DATA
+   Gem_Init
+   Gem_Connect
+   Gem_Disconnect

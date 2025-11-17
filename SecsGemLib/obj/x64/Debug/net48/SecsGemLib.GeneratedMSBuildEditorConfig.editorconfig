@@ -1,0 +1,8 @@
+is_global = true
+build_property.RootNamespace = SecsGemLib
+build_property.ProjectDir = D:\00_Projects\C#\SecsGem\SecsGemLib\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 
+build_property.EnableCodeStyleSeverity = 

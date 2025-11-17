@@ -1,0 +1,3 @@
+D:\00_Projects\C#\SecsGem\GemBridge\bin\Release\net8.0\win-x64\publish\GemBridge.dll
+D:\00_Projects\C#\SecsGem\GemBridge\bin\Release\net8.0\win-x64\publish\GemBridge.pdb
+D:\00_Projects\C#\SecsGem\GemBridge\bin\Release\net8.0\win-x64\publish\SecsGemLib.pdb

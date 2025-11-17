@@ -1,0 +1,6 @@
+D:\00_Projects\C#\SecsGem\SecsGemLib\obj\x64\Debug\net48\SecsGemLib.csproj.AssemblyReference.cache
+D:\00_Projects\C#\SecsGem\SecsGemLib\obj\x64\Debug\net48\SecsGemLib.GeneratedMSBuildEditorConfig.editorconfig
+D:\00_Projects\C#\SecsGem\SecsGemLib\obj\x64\Debug\net48\SecsGemLib.AssemblyInfoInputs.cache
+D:\00_Projects\C#\SecsGem\SecsGemLib\obj\x64\Debug\net48\SecsGemLib.AssemblyInfo.cs
+D:\00_Projects\C#\SecsGem\SecsGemLib\obj\x64\Debug\net48\SecsGemLib.csproj.CoreCompileInputs.cache
+D:\00_Projects\C#\SecsGem\SecsGemLib\obj\x64\Debug\net48\SecsGemLib.sourcelink.json
