@@ -1,0 +1,867 @@
+S1F1W.	/* ARE YOU THERE REQUEST */
+
+S1F2	/* ONLINE DATA */
+<L   
+   <A "EZSIM "> 	/* MDLN */
+   <A "V 2.1 "> 	/* SOFTREV */
+>.
+
+S1F3W	/* SVID */
+<L   
+   <U4 2001>
+   <U4 2002>
+   <U4 2003>
+   <U4 2010>
+   <U4 2020>
+   <U4 2055>
+   <U4 2056>
+   <U4 2101>
+>.
+
+S1F11W	/* SVID_LIST ALL */
+<L
+>.
+
+S1F11W	/* STATUS VARIABLE NAMELIST REQUEST */
+<L   
+   <U2 1> 	/* SVID */
+>.
+
+S1F12	/* STATUS VARIABLE NAMELIST REPLY */
+<L   
+   <L      
+      <U2 1> 	/* SVID   */
+      <A "SVNAME1"> 	/* SVNAME */
+      <A "UNITS"> 	/* UNITS  */
+   >
+>.
+
+S1F13W	/* ESTABLISH COMMUNICATION REQUEST */
+<L
+>.
+
+S1F13W	/* ESTABLISH COMMUNICATION REQUEST */
+<L   
+   <A "EZSIM "> 	/* MDLN */
+   <A "V 2.1 "> 	/* SOFTREV */
+>.
+
+S1F14	/* ESTABLISH COMMUNICATION REQUEST ACK */
+<L   
+   <B 0x00> 	/* COMMACK */
+   <L      
+      <A "EZSIM "> 	/* MDLN */
+      <A "V 2.1 "> 	/* SOFTREV */
+   >
+>.
+
+S1F15W.	/* REQUEST OFFLINE */
+
+S1F16	/* OFFLINE ACK */
+<B 0x00> 	/* OFLACK */.
+
+S1F17W.	/* REQUEST ONLINE */
+
+S1F18	/* ONLINE ACK */
+<B 0x00> 	/* ONLACK */.
+
+S2F13W	/* EQUIPMENT COSTANT REQUEST */
+<L   
+   <U2 10> 	/* ECID */
+>.
+
+S2F14	/* EQUIPMENT CONSTANT DATA */
+<L   
+   <I2 20> 	/* ECV */
+>.
+
+S2F15W	/* NEW EQUIPMENT CONSTANT SEND */
+<L   
+   <L      
+      <U2 100> 	/* ECID */
+      <I2 0> 	/* ECV */
+   >
+>.
+
+S2F16	/* NEW EQUIPMENT CONSTANT ACK */
+<B 0x00> 	/* EAC */.
+
+S2F17W.	/* DATE AND TIME REQUEST */
+
+S2F18	/* DATE AND TIME DATA */
+<A "2008010203040500"> 	/* TIME */.
+
+S2F23W	/* TRACE INITIALIZE SEND */
+<L   
+   <U2 1> 	/* TRID */
+   <A "000005"> 	/* DSPER */
+   <U2 1> 	/* TOTSMP */
+   <U2 1> 	/* REPGSZ */
+   <L      
+      <U2 1> 	/* SVID */
+   >
+>.
+
+S2F24	/* TRACE INITIALIZE ACK */
+<B 0x00> 	/* TIAACK */.
+
+S2F25W	/* LOOPBACK DIAGNOSTIC REQUEST */
+<B 0x00 0x01 0x02 0x03 0x04 0x05 0x06 0x07 0x08 0x09 0x0A 0x0B 0x0C 0x0D 0x0E 0x0F 0x10 0x11 0x12 0x13 
+      0x14 0x15 0x16 0x17 0x18 0x19 0x1A 0x1B 0x1C 0x1D 0x1E 0x1F 0xF0 0xF1 0xF2 0xF3 0xF4 0xF5 0xF6 0xF7 
+      0xF8 0xF9 0xFA 0xFB 0xFC 0xFD 0xFE 0xFF> 	/* ABS */.
+
+S2F26	/* LOOPBACK DISGNOSTIC DATA */
+<B 0x00 0x01 0x02 0x03 0x04 0x05 0x06 0x07 0x08 0x09 0x0A 0x0B 0x0C 0x0D 0x0E 0x0F 0x10 0x11 0x12 0x13 
+      0x14 0x15 0x16 0x17 0x18 0x19 0x1A 0x1B 0x1C 0x1D 0x1E 0x1F 0xF0 0xF1 0xF2 0xF3 0xF4 0xF5 0xF6 0xF7 
+      0xF8 0xF9 0xFA 0xFB 0xFC 0xFD 0xFE 0xFF> 	/* ABS */.
+
+S2F29W	/* EQUIPMENT CONSTANT NAMELIST REQUEST */
+<L   
+   <U2 1> 	/* ECID */
+>.
+
+S2F30	/* EQUIPMENT CONTANT NAMELIST */
+<L   
+   <L      
+      <U2 1> 	/* ECID */
+      <A "ULTRASONIC CURRENT"> 	/* ECNAME */
+      <U2 1> 	/* ECMIN */
+      <U2 10> 	/* ECMAX */
+      <U2 2> 	/* ECDEF */
+      <A "MA"> 	/* UNITS */
+   >
+>.
+
+S2F31W	/* DATE AND TIME SET RUQUEST */
+<A "20241107040500"> 	/* TIME */.
+
+S2F32	/* DATE AND TIME SET ACK */
+<B 0x00> 	/* TIACK */.
+
+S2F33W	/* DEFINE REPORT */
+<L   
+   <U4 1> 	/* DATAID */
+   <L      
+      <L         
+         <U4 1047> 	/* LOT ID READ */
+         <L            
+            <U4 2850> 	/* LOTID        */
+            <U4 2865> 	/* RESERVE TIME */
+         >
+      >
+      <L         
+         <U4 1048> 	/* LOT START */
+         <L            
+            <U4 2850> 	/* LOTID      */
+            <U4 2866> 	/* START TIME */
+         >
+      >
+      <L         
+         <U4 1049> 	/* LOT END */
+         <L            
+            <U4 2850> 	/* LOTID    */
+            <U4 2867> 	/* END TIME */
+            <U4 2868> 	/* WORK QTY */
+         >
+      >
+      <L         
+         <U4 1133> 	/* LOAD TRAY READ */
+         <L            
+            <U4 2850> 	/* LOTID */
+            <U4 2852> 	/* CRRID */
+            <U4 2873> 	/* LOAD TIME */
+         >
+      >
+      <L         
+         <U4 1134> 	/* UNLD TRAY READ */
+         <L            
+            <U4 2850> 	/* LOTID */
+            <U4 2852> 	/* CRRID */
+            <U4 2874> 	/* UNLD TIME */
+         >
+      >
+      <L         
+         <U4 1010> 	/* PROCESS STATE CHANGE */
+         <L            
+            <U4 2053> 	/* STATE */
+            <U4 2054> 	/* PREV STATE */
+            <U4 2864> 	/* DOWN REASON */
+         >
+      >
+      <L         
+         <U4 1013> 	/* PROCESS END */
+         <L            
+            <U4 2852> 	/* CRRID */
+            <U4 2869> 	/* PROCESS START TIME */
+            <U4 2870> 	/* PROCESS END TIME */
+            <U4 2871> 	/* RF ON TIME */
+            <U4 2872> 	/* RF OFF TIME */
+         >
+      >
+   >
+>.
+
+S2F33W	/* CLEAR */
+<L   
+   <U4 0> 	/* DATAID */
+   <L
+   >
+>.
+
+S2F35W	/* LINK EVENT REPORT */
+<L   
+   <U4 0> 	/* DATAID */
+   <L      
+      <L         
+         <U4 1047> 	/*CEID */
+         <L            
+            <U4 1047> 	/*RPTID*/
+         >
+      >
+      <L         
+         <U4 1048> 	/*CEID */
+         <L            
+            <U4 1048> 	/*RPTID*/
+         >
+      >
+      <L         
+         <U4 1049> 	/*CEID */
+         <L            
+            <U4 1049> 	/*RPTID*/
+         >
+      >
+      <L         
+         <U4 1133> 	/*CEID */
+         <L            
+            <U4 1133> 	/*RPTID*/
+         >
+      >
+      <L         
+         <U4 1134> 	/*CEID */
+         <L            
+            <U4 1134> 	/*RPTID*/
+         >
+      >
+      <L         
+         <U4 1010> 	/*CEID */
+         <L            
+            <U4 1010> 	/*RPTID*/
+         >
+      >
+      <L         
+         <U4 1013> 	/*CEID */
+         <L            
+            <U4 1013> 	/*RPTID*/
+         >
+      >
+   >
+>.
+
+S2F35W	/* CLEAR */
+<L   
+   <U4 0> 	/* DATAID */
+   <L
+   >
+>.
+
+S2F37W	/* ENABLE/DISABLE EVENT REPORT */
+<L   
+   <BOOL 0x01> 	/* CEED */
+   <L
+   >
+>.
+
+S2F38	/* ENABLE/DISABLE EVENT REPORT ACK */
+<B 0x00> 	/* ERACK */.
+
+S2F39W	/* MULTI-BLOCK INQUIRE */
+<L   
+   <U2 0> 	/* DATAID */
+   <U2 512> 	/* DATALENGTH */
+>.
+
+S2F40	/* MULTI-BLOCK GRANT */
+<B 0x00> 	/* GRANT */.
+
+S2F41W	/* PP-SELECT */
+<L   
+   <A "PP-SELECT">
+   <L      
+      <L         
+         <A "RESULT">
+         <BOOL 0x01>
+      >
+      <L         
+         <A "PPID"> 	/* CPNAME */
+         <A "Kinneret"> 	/* CPVAL */
+      >
+      <L         
+         <A "LOTID"> 	/* CPNAME */
+         <A "LOTA"> 	/* CPVAL */
+      >
+      <L         
+         <A "STRIP_COUNT"> 	/* CPNAME */
+         <A "20"> 	/* CPVAL */
+      >
+   >
+>.
+
+S2F41W	/* START */
+<L   
+   <A "START"> 	/* RCMD */
+   <L      
+      <L         
+         <A "LOTID">
+         <A "LOTA">
+      >
+   >
+>.
+
+S2F41W	/* STOP */
+<L   
+   <A "STOP"> 	/* RCMD */
+   <L      
+      <L         
+         <A "LOTID">
+         <A "LOTA">
+      >
+   >
+>.
+
+S2F41W	/* STRIP_ID_CONFIRM */
+<L   
+   <A "STRIP_ID_CONFIRM"> 	/* RCMD */
+   <L      
+      <L         
+         <A "TRAY_ID"> 	/* CP NAME */
+         <A "TEST01"> 	/* CP VALUE */
+      >
+      <L         
+         <A "RESULT"> 	/* CP NAME */
+         <A "0X01"> 	/* CP VALUE */
+      >
+   >
+>.
+
+S2F42	/* HOST COMMAND ACK */
+<L   
+   <B 0x00> 	/* HCACK */
+   <L
+   >
+>.
+
+S2F43W	/* RESET SPOOLING STREAM AND FUNCTIONS */
+<L   
+   <L      
+      <U2 5> 	/* STRID */
+      <L         
+         <U1 1> 	/* FCNID */
+      >
+   >
+   <L      
+      <U2 6> 	/* STRID */
+      <L         
+         <U1 1> 	/* FCNID */
+         <U1 11> 	/* FCNID */
+      >
+   >
+>.
+
+S2F44	/* RESET SPOOLING ACK */
+<L   
+   <B 0x01> 	/* RSACK */
+   <L      
+      <L         
+         <U2 2> 	/* STRID */
+         <B 0x01> 	/* STRACK */
+         <L            
+            <U1 5> 	/* FCNID */
+         >
+      >
+      <L         
+         <U2 7> 	/* STRID */
+         <B 0x01> 	/* STRACK */
+         <L            
+            <U1 3> 	/* FCNID */
+            <U1 5> 	/* FCNID */
+         >
+      >
+   >
+>.
+
+S2F45W	/* DEFINE VARIABLE LIMIT ATTRIBUTES */
+<L   
+   <U2 0> 	/* DATAID */
+   <L      
+      <L         
+         <U2 11000> 	/* VID */
+         <L            
+            <L               
+               <B 0x01> 	/* LIMITID */
+               <L                  
+                  <F4 11.000000> 	/* UPPERDB */
+                  <F4 10.000000> 	/* LOWERDB */
+               >
+            >
+            <L               
+               <B 0x02> 	/* LIMITID */
+               <L                  
+                  <F4 21.000000> 	/* UPPERDB */
+                  <F4 20.000000> 	/* LOWERDB */
+               >
+            >
+         >
+      >
+   >
+>.
+
+S2F46	/* VARIABLE LIMIT ATTRIBUTE ACK */
+<L   
+   <B 0x01> 	/* VLAACK */
+   <L      
+      <L         
+         <U2 1> 	/* VID */
+         <B 0x04> 	/* LVACK */
+         <L            
+            <B 0x01> 	/* LIMITID */
+            <B 0x02> 	/* LIMITACK */
+         >
+      >
+   >
+>.
+
+S2F47W	/* VARIABLE LIMIT ATTRIBUTE REQUEST */
+<L   
+   <U2 1> 	/* VID */
+   <U2 2> 	/* VID */
+>.
+
+S2F48	/* VARIABLE LIMIT ATTRIBUTES SEND */
+<L   
+   <L      
+      <U2 1> 	/* VID */
+      <L         
+         <A "THICKNESS"> 	/* UNITS */
+         <U2 200> 	/* LIMITMIN */
+         <U2 300> 	/* LIMITMAX */
+         <L            
+            <L               
+               <B 0x01> 	/* LIMITID */
+               <U2 230> 	/* UPPERDB */
+               <U2 220> 	/* LOWERDB */
+            >
+            <L               
+               <B 0x02> 	/* LIMITID */
+               <U2 270> 	/* UPPERDB */
+               <U2 260> 	/* LOWERDB */
+            >
+         >
+      >
+   >
+   <L      
+      <U2 2> 	/* VID */
+      <L         
+         <A "DIAMETER"> 	/* UNITS */
+         <U1 40> 	/* LIMITMIN */
+         <U1 55> 	/* LIMITMAX */
+         <L            
+            <L               
+               <B 0x03> 	/* LIMITID */
+               <U1 45> 	/* UPPERDB */
+               <U1 50> 	/* LOWERDB */
+            >
+         >
+      >
+   >
+>.
+
+S2F49W	/* LGIT_PP_SELECT */
+<L   
+   <U4 0>
+   <A "LGIT_PP_SELECT"> 	/* RCMD */
+   <A "LGIT_PP_SELECT"> 	/* RCMD */
+   <L      
+      <L         
+         <A "RECIPEID"> 	/* CPNAME */
+         <A "COMMON_REV0"> 	/* CPVAL */
+      >
+      <L         
+         <A "LOTID"> 	/* CPNAME */
+         <A "GSY895AQ8370"> 	/* CPVAL */
+      >
+   >
+>.
+
+S2F49W	/* LGIT_LOT_START */
+<L   
+   <U4 0>
+   <A "LGIT_LOT_START"> 	/* RCMD */
+   <A "LGIT_LOT_START"> 	/* RCMD */
+   <L      
+      <L         
+         <A "LOTID"> 	/* CPNAME */
+         <A "GSY895AQ8370"> 	/* CPVAL */
+      >
+      <L         
+         <A "LOTCOUNT"> 	/* CPNAME */
+         <A "360"> 	/* CPVAL */
+      >
+      <L         
+         <A "TRAYCOUNT"> 	/* CPNAME */
+         <A "30"> 	/* CPVAL */
+      >
+      <L         
+         <A "RECIPEID"> 	/* CPNAME */
+         <A "COMMON_REV0"> 	/* CPVAL */
+      >
+   >
+>.
+
+S5F1W	/* ALARM REPORT SEND */
+<L   
+   <B 0x06> 	/* ALCD */
+   <U2 1> 	/* ALID */
+   <A "OPERATION ERROR "> 	/* ALTX */
+>.
+
+S5F2	/* ALARM REPORT ACK */
+<B 0x00> 	/* ACKC5 */.
+
+S5F3W	/* ENABLE/DISALBE ALARM SEND */
+<L   
+   <B 0x80> 	/* ALED */
+   <U2 1> 	/* ALID */
+>.
+
+S5F4	/* ENABLE/DISABLE ALARM ACK */
+<B 0x00> 	/* ACKC5 */.
+
+S5F5W	/* LIST ALARMS REQUEST */
+<U2 1> 	/* ALID */.
+
+S5F6	/* LIST ALARM DATA */
+<L   
+   <L      
+      <B 0x06> 	/* ALCD */
+      <U2 1> 	/* ALID */
+      <A "EQUIPMENT ERROR_ "> 	/* ALTX */
+   >
+>.
+
+S5F7W.	/* LIST ENABLED ALARM REQUEST */
+
+S5F8	/* LIST ENABLED ALARM DATA */
+<L   
+   <L      
+      <B 0x06> 	/* ACLD */
+      <U2 1> 	/* ALID */
+      <A "EQUIPMENT ERROR_ "> 	/* ALTX */
+   >
+>.
+
+S6F1W	/* TRACE DATA SEND */
+<L   
+   <U2 1> 	/* TRID */
+   <U2 1> 	/* SMPLN */
+   <A "2008010203040500"> 	/* STIME */
+   <L      
+      <U2 1> 	/* SV */
+      <I2 2> 	/* SV */
+      <A "3"> 	/* SV */
+      <I1 4> 	/* SV */
+      <A "5"> 	/* SV */
+   >
+>.
+
+S6F2	/* TRACE DATA ACK */
+<B 0x00> 	/* ACKC6 */.
+
+S6F5W	/* MULTI-BLOCK DATA SEND INQUIRE */
+<L   
+   <U2 1> 	/* DATAID */
+   <U2 4096> 	/* DATALENGTH */
+>.
+
+S6F6	/* MULTI-BLOCK GRANT */
+<B 0x00> 	/* GRANT6 */.
+
+S6F11W	/* EVENT REPORT SEND */
+<L   
+   <U2 0> 	/* DATAID */
+   <U4 1> 	/* CEID */
+   <L      
+      <L         
+         <U2 1> 	/* RPTID */
+         <L            
+            <I2 -7> 	/* V */
+            <U1 4> 	/* V */
+         >
+      >
+   >
+>.
+
+S6F12	/* EVENT REPORT ACK */
+<B 0x00> 	/* ACKC6 */.
+
+S6F13W	/* ANNOTATED EVENT REPORT SEND */
+<L   
+   <U2 0> 	/* DATAID */
+   <U4 1> 	/* CEID */
+   <L      
+      <L         
+         <U2 1> 	/* RPTID */
+         <L            
+            <L               
+               <U2 1> 	/* VID */
+               <I2 -7> 	/* V */
+            >
+            <L               
+               <U2 2> 	/* VID */
+               <U1 4> 	/* V */
+            >
+         >
+      >
+   >
+>.
+
+S6F14	/* ANNOTATED EVENT REPORT ACK */
+<B 0x00> 	/* ACKC6 */.
+
+S6F15W	/* EVENT REPORT REQUEST */
+<U4 0> 	/* CEID */.
+
+S6F16	/* EVENT REPORT DATA */
+<L   
+   <U2 0> 	/* DATAID */
+   <U4 1> 	/* CEID */
+   <L      
+      <L         
+         <U2 1> 	/* RPTID */
+         <L            
+            <I2 -7> 	/* V */
+            <U1 4> 	/* V */
+         >
+      >
+   >
+>.
+
+S6F17W	/* ANNOTATED EVENT REPORT REQUEST */
+<U4 0> 	/* CEID */.
+
+S6F18	/* ANNOTATED EVENT REPORT DATA */
+<L   
+   <U2 0> 	/* DATAID */
+   <U4 1> 	/* CEID */
+   <L      
+      <L         
+         <U2 1> 	/* RPTID */
+         <L            
+            <L               
+               <U2 1> 	/* VID */
+               <I2 -7> 	/* V */
+            >
+            <L               
+               <U2 2> 	/* VID */
+               <U1 4> 	/* V */
+            >
+         >
+      >
+   >
+>.
+
+S6F19W	/* INDIVIDUAL REPORT REQUEST */
+<U2 1> 	/* RPTID */.
+
+S6F20	/* INDIVIDUAL REPORT DATA */
+<L   
+   <I2 -7> 	/* V */
+   <U1 4> 	/* V */
+>.
+
+S6F21W	/* ANNOTATED INDIVIDUAL REPORT REQUEST */
+<U2 1> 	/* RPTID */.
+
+S6F22	/* ANNOTATED INDIVIDUAL REPORT DATA */
+<L   
+   <L      
+      <U2 1> 	/* VID */
+      <I2 -7> 	/* V */
+   >
+   <L      
+      <U2 2> 	/* VID */
+      <U1 4> 	/* V */
+   >
+>.
+
+S6F23W	/* REQUEST SPOOLED DATA */
+<U1 0> 	/* RSDC */.
+
+S6F24	/* REQUEST SPOOLED DATA ACK */
+<B 0x00> 	/* RSDA */.
+
+S7F1W	/* PROCESS PROGRAM LOAD INQUIRE */
+<L   
+   <A "PP01            "> 	/* PPID */
+   <U2 512> 	/* LENGTH */
+>.
+
+S7F2	/* PROCESS PROGRAM LOAD GRANT */
+<B 0x00> 	/* PPGNT */.
+
+S7F3W	/* PROCESS PROGRAM SEND */
+<L   
+   <A "PP01            "> 	/* PPID */
+   <B 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 
+      0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 
+      0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF> 	/* PPBODY */
+>.
+
+S7F3W	/* PROCESS PROGRAM FILE SEND */
+<L   
+   <A "PP01            "> 	/* PPID */
+   <B_FILE=(EZSIM.CFG)> 	/* PPBODY */
+>.
+
+S7F4	/* PROCESS PROGRAM ACK */
+<B 0x00> 	/* ACKC7 */.
+
+S7F5W	/* PROCESS PROGRAM REQUEST */
+<A "PP01            "> 	/* PPID */.
+
+S7F6	/* PROCESS PROGRAM DATA */
+<L   
+   <A "PP01            "> 	/* PPID */
+   <B 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF> 	/* PPBODY */
+>.
+
+S7F17W	/* DELETE PROCESS PROGRAM SEND */
+<L   
+   <A "PP01            "> 	/* PPID */
+>.
+
+S7F18	/* DELETE PROCESS PROGRAM ACK */
+<B 0x00> 	/* ACKC7 */.
+
+S7F19W.	/* CURRENT EPPD REQUEST */
+
+S7F20	/* CURRENT EPPD DATA */
+<L   
+   <A "PP01            "> 	/* PPID */
+   <A "PP02            "> 	/* PPID */
+>.
+
+S7F23W	/* FORMATTED PROCESS PROGRAM SEND */
+<L   
+   <A "PP01            "> 	/* PPID */
+   <A "EZSIM"> 	/* MDLN */
+   <A "000000"> 	/* SOFTREV */
+   <L      
+      <L         
+         <U2 1> 	/* CCODE */
+         <L            
+            <U2 100> 	/* PPARM */
+            <U2 60> 	/* PPARM */
+         >
+      >
+   >
+>.
+
+S7F24	/* FORMATTED PROCESS PROGRAM ACK */
+<B 0x00> 	/* ACKC7 */.
+
+S7F25W	/* FORMATTED PROCESS PRORAM REQUEST */
+<A "PP01            "> 	/* PPID */.
+
+S7F26	/* FORMATTED PROCESS PROGRAM DATA */
+<L   
+   <A "PP01            "> 	/* PPID */
+   <A "EZSIM"> 	/* MDLN */
+   <A "000000"> 	/* SOFTREV */
+   <L      
+      <L         
+         <U2 1> 	/* CCODE */
+         <L            
+            <U2 100> 	/* PPARM */
+            <U2 60> 	/* PPARM */
+         >
+      >
+   >
+>.
+
+S10F3W	/* TERMINAL DISPLAY, SINGLE */
+<L   
+   <B 0x00> 	/* TID */
+   <A "TERMINAL MESSAGE... HI !!!"> 	/* TEXT */
+>.
+
+S10F4	/* TERMINAL DISPLAY, SINGLE ACK */
+<B 0x00> 	/* ACKC10 */.
+
+S10F5W	/* TERMINAL DISPLAY, MULTI-BLOCK */
+<L   
+   <B 0x00> 	/* TID */
+   <L      
+      <A "AAAAA           "> 	/* TEXT */
+      <A "BBBBB           "> 	/* TEXT */
+      <A "CCCCC           "> 	/* TEXT */
+   >
+>.
+
+S10F6	/* TERMINAL DISPLAY, MULTI-BLOCK ACK */
+<B 0x00> 	/* ACKC10 */.
+
+[EZSIM CONVERSATION::BEGIN]
+[EZSIM MODULES=15]
+[EZSIM MODULE[1]=S1F3 Test |<>
+[S1F3 Test:ON_EVENT: S6F11W /* EVENT REPORT SEND */]
+[S1F3 Test:<< SEND : S1F3W /* SVID_ALL */]
+[EZSIM MODULE[2]=S1F3 Test |<>
+[S1F3 Test:ON_EVENT: S6F11W /* EVENT REPORT SEND */]
+[S1F3 Test:<< SEND : S1F3W /* SVID_ALL */]
+[EZSIM MODULE[3]=S1F3 Test |<>
+[S1F3 Test:ON_EVENT: S6F11W /* EVENT REPORT SEND */]
+[S1F3 Test:<< SEND : S1F3W /* SVID_ALL */]
+[EZSIM MODULE[4]=S1F3 Test |<>
+[S1F3 Test:ON_EVENT: S6F11W /* EVENT REPORT SEND */]
+[S1F3 Test:<< SEND : S1F3W /* SVID_ALL */]
+[EZSIM MODULE[5]=S1F3 Test |<>
+[S1F3 Test:ON_EVENT: S6F11W /* EVENT REPORT SEND */]
+[S1F3 Test:<< SEND : S1F3W /* SVID_ALL */]
+[EZSIM MODULE[6]=S1F3 Test |<>
+[S1F3 Test:ON_EVENT: S6F11W /* EVENT REPORT SEND */]
+[S1F3 Test:<< SEND : S1F3W /* SVID_ALL */]
+[EZSIM MODULE[7]=S1F3 Test |<>
+[S1F3 Test:ON_EVENT: S6F11W /* EVENT REPORT SEND */]
+[S1F3 Test:<< SEND : S1F3W /* SVID_ALL */]
+[EZSIM MODULE[8]=S1F3 Test |<>
+[S1F3 Test:ON_EVENT: S6F11W /* EVENT REPORT SEND */]
+[S1F3 Test:<< SEND : S1F3W /* SVID_ALL */]
+[EZSIM MODULE[9]=S1F3 Test |<>
+[S1F3 Test:ON_EVENT: S6F11W /* EVENT REPORT SEND */]
+[S1F3 Test:<< SEND : S1F3W /* SVID_ALL */]
+[EZSIM MODULE[10]=S1F3 Test |<>
+[S1F3 Test:ON_EVENT: S6F11W /* EVENT REPORT SEND */]
+[S1F3 Test:<< SEND : S1F3W /* SVID_ALL */]
+[EZSIM MODULE[11]=S1F3 Test |<>
+[S1F3 Test:ON_EVENT: S6F11W /* EVENT REPORT SEND */]
+[S1F3 Test:<< SEND : S1F3W /* SVID_ALL */]
+[EZSIM MODULE[12]=S1F3 Test |<>
+[S1F3 Test:ON_EVENT: S6F11W /* EVENT REPORT SEND */]
+[S1F3 Test:<< SEND : S1F3W /* SVID_ALL */]
+[EZSIM MODULE[13]=S1F3 Test |<>
+[S1F3 Test:ON_EVENT: S6F11W /* EVENT REPORT SEND */]
+[S1F3 Test:<< SEND : S1F3W /* SVID_ALL */]
+[EZSIM MODULE[14]=S1F3 Test |<>
+[S1F3 Test:ON_EVENT: S6F11W /* EVENT REPORT SEND */]
+[S1F3 Test:<< SEND : S1F3W /* SVID_ALL */]
+[EZSIM MODULE[15]=Online Scenario |<>
+[Online Scenario:ON_EVENT: OnConnected]
+[Online Scenario:<< SEND : S2F33W /* S2F33_CLEAR  */]
+[Online Scenario:>> WAIT : S2F34 /* DEFINE REPORT ACK */]
+[Online Scenario:<< SEND : S2F33W /* DEFINE REPORT */]
+[Online Scenario:>> WAIT : S2F34 /* DEFINE REPORT ACK */]
+[Online Scenario:<< SEND : S2F35W /* S2F35_CLEAR */]
+[Online Scenario:>> WAIT : S2F36 /* LINK EVENT REPORT ACK */]
+[Online Scenario:<< SEND : S2F35W /* LINK EVENT REPORT */]
+[Online Scenario:>> WAIT : S2F36 /* LINK EVENT REPORT ACK */]
+[EZSIM CONVERSATION::END]

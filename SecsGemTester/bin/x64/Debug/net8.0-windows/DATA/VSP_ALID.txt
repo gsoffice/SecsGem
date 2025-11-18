@@ -1,0 +1,199 @@
+4000, Front Emergency[X000] Alarm	,6
+4001, Rear Emergency[X001] Alarm	,6
+4002, Safety Door Front[X002] Alarm	,6
+4003, Safety Door Rear[X003] Alarm	,6
+4004, Safety Door Left[X004] Alarm	,6
+4005, Safety Door Right[X005] Alarm	,6
+4006, Pump Overload[X006] Alarm	,6
+4007, Negative phase check[X007] Alarm	,6
+4008, Alarm Status(Option)[X008] Alarm	,6
+4009, Main Air Pressure[X009] Alarm	,6
+4010, Gas1 Pressure[X00A] Alarm	,6
+4011, Gas2 Pressure[X00B] Alarm	,6
+4012, Gas3 Pressure(OPTION)[X00C] Alarm	,6
+4013, Gas4 Pressure(OPTION)[X00D] Alarm	,6
+4014, N2 Pressure[X00E] Alarm	,6
+4015, Vacuum Valve Open[X00F] Alarm	,6
+4016, Electrode Cooling Check(TOP)[X010] Alarm	,6
+4017, Electrode Cooling Check(BOTTOM)[X011] Alarm	,6
+4018, Matcher Cooling Check(TOP)[X012] Alarm	,6
+4019, Matcher Cooling Check(BOTTOM)[X013] Alarm	,6
+4020, Pump Oil Check[X014] Alarm	,6
+4021, Chamber Open[X015] Alarm	,6
+4022, Chamber Close[X016] Alarm	,6
+4023, Safety Sensor[X017] Alarm	,6
+4024, Loading Pusher Overload #1[X018] Alarm	,6
+4025, Loading Pusher Overload #2[X019] Alarm	,6
+4026, Loading Pusher Overload #3[X01A] Alarm	,6
+4027, Loading Pusher Overload #4[X01B] Alarm	,6
+4028, Loading Pusher Overload #5[X01C] Alarm	,6
+4029, Elevator Mgz. Detect #1(TOP)[X01D] Alarm	,6
+4030, Elevator Mgz. Detect #2(TOP)[X01E] Alarm	,6
+4031, Elevator Mgz. Detect #3(TOP)[X01F] Alarm	,6
+4032, Elevator Mgz. Detect #4(TOP)[X020] Alarm	,6
+4033, Elevator Mgz. Detect #5(TOP)[X021] Alarm	,6
+4034, Elevator Mgz. Detect #1(BOTTOM)[X022] Alarm	,6
+4035, Elevator Mgz. Detect #2(BOTTOM)[X023] Alarm	,6
+4036, Elevator Mgz. Detect #3(BOTTOM)[X024] Alarm	,6
+4037, Elevator Mgz. Detect #4(BOTTOM)[X025] Alarm	,6
+4038, Elevator Mgz. Detect #5(BOTTOM)[X026] Alarm	,6
+4039, Strip Jam Detect #1[X027] Alarm	,6
+4040, Strip Jam Detect #2[X028] Alarm	,6
+4041, Strip Jam Detect #3[X029] Alarm	,6
+4042, Strip Jam Detect #4[X02A] Alarm	,6
+4043, Strip Jam Detect #5[X02B] Alarm	,6
+4044, Bridge Up[X02C] Alarm	,6
+4045, Bridge Down[X02D] Alarm	,6
+4046, Bridge Forward[X02E] Alarm	,6
+4047, Bridge Backward[X02F] Alarm	,6
+4048, Gripper Strip Detect #1[X030] Alarm	,6
+4049, Gripper Strip Detect #2[X031] Alarm	,6
+4050, Gripper Strip Detect #3[X032] Alarm	,6
+4051, Gripper Strip Detect #4[X033] Alarm	,6
+4052, Gripper Strip Detect #5[X034] Alarm	,6
+4053, Gripper Open #1[X035] Alarm	,6
+4054, Gripper Close #1[X036] Alarm	,6
+4055, Gripper Open #2[X037] Alarm	,6
+4056, Gripper Close #2[X038] Alarm	,6
+4057, Gripper Open #3[X039] Alarm	,6
+4058, Gripper Close #3[X03A] Alarm	,6
+4059, Gripper Open #4[X03B] Alarm	,6
+4060, Gripper Close #4[X03C] Alarm	,6
+4061, Gripper Open #5[X03D] Alarm	,6
+4062, Gripper Close #5[X03E] Alarm	,6
+4063, Index Pusher Overload #1[X03F] Alarm	,6
+4064, Index Pusher Overload #2[X040] Alarm	,6
+4065, Index Pusher Overload #3[X041] Alarm	,6
+4066, Index Pusher Overload #4[X042] Alarm	,6
+4067, Index Pusher Overload #5[X043] Alarm	,6
+4068, Chamber Rail Left Strip Edge Detect[X044] Alarm	,6
+4069, Chamber Rail Left Strip Detect[X045] Alarm	,6
+4070, Chamber Rail Right Strip Detect[X046] Alarm	,6
+4071, Chamber Rail Right Strip Edge Detect[X047] Alarm	,6
+4072, BCR Cylinder Up[X048] Alarm	,6
+4073, BCR Cylinder Down[X049] Alarm	,6
+4074, Bridge Strip Detect #1[X04A] Alarm	,6
+4075, Bridge Strip Detect #2[X04B] Alarm	,6
+4076, Bridge Strip Detect #3[X04C] Alarm	,6
+4077, Bridge Strip Detect #4[X04D] Alarm	,6
+4078, Bridge Strip Detect #5[X04E] Alarm	,6
+4079, BCR Alarm[X04F] Alarm	,6
+4080, Ionizer [X010] Alarm	,6
+4200, LOADING PUSHER IS NOT READY POSITION	,6
+4201, ELEVATOR TABLE EMPTY MGZ	,6
+4202, ELEVATOR UP-TABLE EMPTY MGZ	,6
+4203, ELEVATOR DOWN-TABLE MGZ EMPTY	,6
+4204, INDEX PUSHER IS NOT READY POSITION	,6
+4205, INDEX PUHSER INTERLOCK WITH BRIDGE	,6
+4206, INDEX PUSHER INTERLOCK WITH ELEVATOR	,6
+4207, Gripper Strip Detect #1[X030] Alarm	,6
+4208, Gripper Strip Detect #2[X031] Alarm	,6
+4209, Gripper Strip Detect #3[X032] Alarm	,6
+4210, Gripper Strip Detect #4[X033] Alarm	,6
+4211, Gripper Strip Detect #5[X034] Alarm	,6
+4212, Chamber Open[X015] Alarm	,6
+4213, Pump Oil Change Alarm	,6
+4214, BCR Time-Out	,6
+4215, Index Pusher Unload Postion Alarm	,6
+4216, BCR Cylinder Up[X048] Alarm	,6
+4217, BCR of Lane 1 Time-Out	,6
+4218, BCR of Lane 2 Time-Out	,6
+4219, BCR of Lane 3 Time-Out	,6
+4220, BCR of Lane 4 Time-Out	,6
+4221, BCR of Lane 5 Time-Out	,6
+4222, Barcode Information upload fail	,6
+4223, Barcode Information download fail	,6
+4224, Barcode Information compare result fail	,6
+4225, Barcode of strip & recipe matching failed	,6
+4226, Abnormal Strip was detected.	,6
+4227, Barcode Scan Fail	,6
+4228, Strip ID Confirm Timeout	,6
+4229, Strip ID Confirm Error	,6
+4235, hostalarmMessage	,6
+4250, Magazine BCR of Lane 1 Time-Out	,6
+4251, Magazine BCR of Lane 2 Time-Out	,6
+4252, Magazine BCR of Lane 3 Time-Out	,6
+4253, Magazine BCR of Lane 4 Time-Out	,6
+4254, Magazine BCR of Lane 5 Time-Out	,6
+4255, Magazine Barcode Confirm Fail	,6
+4256, In/Out strip counts are not matching.	,6
+4257, In/Out Magazine ID mismatch	,6
+4258, Load Strip Information mismatch	,6
+4259, Magazine ID Validation Error[LANE 1]	,6
+4260, Magazine ID Validation Error[LANE 2]	,6
+4261, Magazine ID Validation Error[LANE 3]	,6
+4262, Magazine ID Validation Error[LANE 4]	,6
+4263, Magazine ID Validation Error[LANE 5]	,6
+4264, Magazine ID Validation Time-Out[LANE 1]	,6
+4265, Magazine ID Validation Time-Out[LANE 2]	,6
+4266, Magazine ID Validation Time-Out[LANE 3]	,6
+4267, Magazine ID Validation Time-Out[LANE 4]	,6
+4268, Magazine ID Validation Time-Out[LANE 5]	,6
+4400, CHAMBER VACUUM TIME OVER	,6
+4401, CHAMBER RF ERROR	,6
+4402, CHAMBER RF POWER ERROR.	,6
+4403, CHAMBER GAS1 ERROR	,6
+4404, CHAMBER GAS2 ERROR	,6
+4405, CHAMBER GAS3 ERROR	,6
+4406, CHAMBER GAS4 ERROR	,6
+4407, OVER-PRESSURE ERROR	,6
+4408, RF COMMUNICATION ERROR	,6
+4409, VACUUM GAUGE FAULT	,6
+4410, VACUUM GAUGE VALVE OPEN ERROR	,6
+4450, RF Generator  Over Temp. error	,6
+4451, RF Generator Overheat error	,6
+4452, RF Generator  Current High error	,6
+4453, RF Generator  Forward High error	,6
+4454, RF Generator  Reflect High error	,6
+4455, RF Generator  External Interlock error	,6
+4456, RF Generator  Interlock Switch(Cover) Error	,6
+4457, RF Generator  Fan Off Fault Interlock Error	,6
+4458, RF Generator  Overheat and External Interlock Error	,6
+4459, RF Generator Current High and Switch Interlock Error	,6
+4500, LOADING PUSHER NOT HOME	,6
+4501, LOADING PUSHER DRIVER ALARM	,6
+4502, LOADING PUSHER -SOFT LIMIT	,6
+4503, LOADING PUSHER +SOFT LIMIT	,6
+4504, LOADING PUSHER -LIMIT	,6
+4505, LOADING PUSHER +LIMIT	,6
+4506, LOADING PUSHER HOME START FAIL	,6
+4507, LOADING PUSHER HOME FAIL	,6
+4508, LOADING PUSHER TIME OUT	,6
+4509, LOADING PUSHER START FAIL	,6
+4510, MGZ. ELEVATOR NOT HOME	,6
+4511, MGZ. ELEVATOR DRIVER ALARM	,6
+4512, MGZ. ELEVATOR -SOFT LIMIT	,6
+4513, MGZ. ELEVATOR +SOFT LIMIT	,6
+4514, MGZ. ELEVATOR -LIMIT	,6
+4515, MGZ. ELEVATOR +LIMIT	,6
+4516, MGZ. ELEVATOR HOME START FAIL	,6
+4517, MGZ. ELEVATOR HOME FAIL	,6
+4518, MGZ. ELEVATOR TIME OUT	,6
+4519, MGZ. ELEVATOR START FAIL	,6
+4520, INDEX PUSHER NOT HOME	,6
+4521, INDEX PUSHER DRIVER ALARM	,6
+4522, INDEX PUSHER -SOFT LIMIT	,6
+4523, INDEX PUSHER +SOFT LIMIT	,6
+4524, INDEX PUSHER - LIMIT	,6
+4525, INDEX PUSHER + LIMIT	,6
+4526, INDEX PUSHER HOME START FAIL	,6
+4527, INDEX PUSHER HOME FAIL	,6
+4528, INDEX PUSHER TIME OUT	,6
+4529, INDEX PUSHER START FAIL	,6
+4530, VISION Y NOT HOME	,6
+4531, VISION Y DRIVER ALARM	,6
+4532, VISION Y -SOFT LIMIT	,6
+4533, VISION Y +SOFT LIMIT	,6
+4534, VISION Y - LIMIT	,6
+4535, VISION Y + LIMIT	,6
+4536, VISION Y HOME START FAIL	,6
+4537, VISION Y HOME FAIL	,6
+4538, VISION Y TIME OUT	,6
+4539, VISION Y START FAIL	,6
+4550, MES Server Data Transfer Failure	,6
+4551, Barcode recognition failure tray present	,6
+4552, MES network connection error	,6
+4560, Index Pusher Motor Synchronization Failure	,6
+4570, Communication timeout occurred	,6
+4571, Receive alarm command	,6
+4700, Cim Ppid Wrong, 6

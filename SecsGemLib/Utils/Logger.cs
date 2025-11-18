@@ -17,7 +17,7 @@ namespace SecsGemLib.Utils
             lock (_lock)
             {
                 string line = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}] {msg}";
-                EventHandler.Invoke(line);                
+                EventHandler?.Invoke(line);                
             }
         }
     }

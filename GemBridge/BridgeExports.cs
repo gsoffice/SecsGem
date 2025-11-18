@@ -9,7 +9,7 @@ public static class BridgeExports
     [UnmanagedCallersOnly(EntryPoint = "Gem_Init")]
     public static int Gem_Init()
     {
-        //_gem = new GemApi();
+        _gem = new GemApi();
         return 1;
     }
 
