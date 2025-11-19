@@ -1,5 +1,6 @@
 ﻿using SecsGemLib.Utils;
 using SecsGemLib.Message.Objects;
+using System.Reflection;
 
 namespace SecsGemLib.Core
 {
@@ -40,11 +41,13 @@ namespace SecsGemLib.Core
             MsgDataSaver.SaveData(msg);
 
             // logging
-            Logger.Write($"[HSMS:IN] {ByteHelper.ToHex(data)}");
-            Logger.Write($"[SECS-II:IN] {msg}");
+            Logger.Write($"[HSMS:IN] {ByteHelper.ToHex(data)}");            
+            //Logger.Write($"[SECS-II:IN] {msg}");            
 
             // 응답
-            MsgResponser.Response(msg);            
+            MsgResponser.Response(msg);
+
+            OtherMessageReceived?.Invoke(data);
         }
     }
 }

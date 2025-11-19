@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GemBridge")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+10a44e195c6e9d0c06f223cda7335c7cd5fd3da7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8397dc098084c706ee2f8423e25e2d37a1c88abc")]
 [assembly: System.Reflection.AssemblyProductAttribute("GemBridge")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GemBridge")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

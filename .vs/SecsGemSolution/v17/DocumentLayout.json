@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Projects\\C#\\SecsGemSolution\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|d:\\projects\\c#\\secsgemsolution\\secsgemlib\\00_core\\04_interpret\\format\\msgformatregistry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|solutionrelative:secsgemlib\\00_core\\04_interpret\\format\\msgformatregistry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|d:\\projects\\c#\\secsgemsolution\\secsgemlib\\00_core\\04_interpret\\format\\msgformatinspector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26865CCF-CB44-45FB-9979-0D45CA785561}|SecsGemLib\\SecsGemLib.csproj|solutionrelative:secsgemlib\\00_core\\04_interpret\\format\\msgformatinspector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -31,32 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MsgFormatRegistry.cs",
-              "DocumentMoniker": "D:\\Projects\\C#\\SecsGemSolution\\SecsGemLib\\00_Core\\04_Interpret\\Format\\MsgFormatRegistry.cs",
-              "RelativeDocumentMoniker": "SecsGemLib\\00_Core\\04_Interpret\\Format\\MsgFormatRegistry.cs",
-              "ToolTip": "D:\\Projects\\C#\\SecsGemSolution\\SecsGemLib\\00_Core\\04_Interpret\\Format\\MsgFormatRegistry.cs",
-              "RelativeToolTip": "SecsGemLib\\00_Core\\04_Interpret\\Format\\MsgFormatRegistry.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T15:18:51.773Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MsgFormatInspector.cs",
-              "DocumentMoniker": "D:\\Projects\\C#\\SecsGemSolution\\SecsGemLib\\00_Core\\04_Interpret\\Format\\MsgFormatInspector.cs",
-              "RelativeDocumentMoniker": "SecsGemLib\\00_Core\\04_Interpret\\Format\\MsgFormatInspector.cs",
-              "ToolTip": "D:\\Projects\\C#\\SecsGemSolution\\SecsGemLib\\00_Core\\04_Interpret\\Format\\MsgFormatInspector.cs",
-              "RelativeToolTip": "SecsGemLib\\00_Core\\04_Interpret\\Format\\MsgFormatInspector.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T13:37:40.13Z",
-              "EditorCaption": ""
             }
           ]
         },

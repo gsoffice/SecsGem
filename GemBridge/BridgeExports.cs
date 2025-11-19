@@ -29,4 +29,10 @@ public static class BridgeExports
     {
         _gem?.Disconnect();
     }
+
+    [UnmanagedCallersOnly(EntryPoint = "Gem_RegisterCallback")]
+    public static unsafe void Gem_RegisterCallback(delegate* unmanaged[Cdecl]<byte*, int, long, void> cb)
+    {
+        GemApi.RegisterNativeCallback(cb);
+    }
 }

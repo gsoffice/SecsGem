@@ -12,6 +12,14 @@ namespace SecsGemLib
     /// </summary>
     public class GemApi
     {
+        // C++ 콜백 저장: void(byte*, int, long)
+        private unsafe static delegate* unmanaged[Cdecl]<byte*, int, long, void> _nativeCallback = null;
+
+        public static unsafe void RegisterNativeCallback(delegate* unmanaged[Cdecl]<byte*, int, long, void> callback)
+        {
+            _nativeCallback = callback;
+        }
+
         private MsgHandler _hsmsHandler;
         public event Action<byte[]> OnMessageReceive;
 
@@ -94,10 +102,19 @@ namespace SecsGemLib
         /// <summary>
         /// 내부 수신 처리 → 외부 이벤트로 전달
         /// </summary>
-        private void OnMessageReceived(byte[] data)
+        private unsafe void OnMessageReceived(byte[] data)
         {
             string msg = Encoding.ASCII.GetString(data);
             MessageReceived?.Invoke(msg);
+
+            long msgId = 0;
+            if (_nativeCallback != null)
+            {
+                fixed (byte* p = data)
+                {
+                    _nativeCallback(p, data.Length, msgId);
+                }
+            }
         }
 
         public void AddSvid(long svid, string name, string format, string unit)
